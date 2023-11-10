@@ -1,11 +1,11 @@
 # CampusMap
 Purdue Northwest Campus Map Web App
 
-client contains the frontend code, the server contains the backend code, and the common contains code that can be shared to both the client and server.
+client contains the frontend code, the server contains the backend code, and the common contains code that can be shared with both the client and server.
 
 For running the project
 ## First run the server code
-1. cd /server
+1. cd server/
 2. npm install
 3. node index.js
 ## Then run the Client code to view the frontend
