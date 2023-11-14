@@ -1,6 +1,6 @@
 const express = require('express');
 const { authenticateJwt, SECRET } = require("../middleware/auth");
-const { User, Course, Admin } = require("../db");
+const { User, Course, Admin } = require("../db/Schema");
 const router = express.Router();
 
   router.post('/signup', async (req, res) => {
@@ -24,37 +24,6 @@ const router = express.Router();
       res.json({ message: 'Logged in successfully', token });
     } else {
       res.status(403).json({ message: 'Invalid username or password' });
-    }
-  });
-  
-  router.get('/courses', authenticateJwt, async (req, res) => {
-    const courses = await Course.find({published: true});
-    res.json({ courses });
-  });
-  
-  router.post('/courses/:courseId', authenticateJwt, async (req, res) => {
-    const course = await Course.findById(req.params.courseId);
-    console.log(course);
-    if (course) {
-      const user = await User.findOne({ username: req.user.username });
-      if (user) {
-        user.purchasedCourses.push(course);
-        await user.save();
-        res.json({ message: 'Course purchased successfully' });
-      } else {
-        res.status(403).json({ message: 'User not found' });
-      }
-    } else {
-      res.status(404).json({ message: 'Course not found' });
-    }
-  });
-  
-  router.get('/purchasedCourses', authenticateJwt, async (req, res) => {
-    const user = await User.findOne({ username: req.user.username }).populate('purchasedCourses');
-    if (user) {
-      res.json({ purchasedCourses: user.purchasedCourses || [] });
-    } else {
-      res.status(403).json({ message: 'User not found' });
     }
   });
   
