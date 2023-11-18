@@ -1,13 +1,3 @@
-/* eslint-disable no-undef */
-if (typeof window !== 'undefined') {
-  if (window.__vite_plugin_react_runtime_loaded__) {
-    throw new Error(
-      'React refresh runtime was loaded twice. Maybe you forgot the base path?',
-    )
-  }
-  window.__vite_plugin_react_runtime_loaded__ = true
-}
-
 function debounce(fn, delay) {
   let handle
   return () => {
@@ -16,6 +6,7 @@ function debounce(fn, delay) {
   }
 }
 
+/* eslint-disable no-undef */
 const enqueueUpdate = debounce(exports.performReactRefresh, 16)
 
 // Taken from https://github.com/pmmmwh/react-refresh-webpack-plugin/blob/main/lib/runtime/RefreshUtils.js#L141
@@ -35,8 +26,11 @@ function registerExportsForReactRefresh(filename, moduleExports) {
 }
 
 function validateRefreshBoundaryAndEnqueueUpdate(prevExports, nextExports) {
-  if (!predicateOnExport(prevExports, (key) => !!nextExports[key])) {
+  if (!predicateOnExport(prevExports, (key) => key in nextExports)) {
     return 'Could not Fast Refresh (export removed)'
+  }
+  if (!predicateOnExport(nextExports, (key) => key in prevExports)) {
+    return 'Could not Fast Refresh (new export)'
   }
 
   let hasExports = false
@@ -45,7 +39,6 @@ function validateRefreshBoundaryAndEnqueueUpdate(prevExports, nextExports) {
     (key, value) => {
       hasExports = true
       if (exports.isLikelyComponentType(value)) return true
-      if (!prevExports[key]) return false
       return prevExports[key] === nextExports[key]
     },
   )
