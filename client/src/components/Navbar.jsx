@@ -120,7 +120,7 @@ const Navbar = ({ onSearchItemClick }) => {
               aria-haspopup="true"
               aria-controls="menu-appbar"
             >
-              <AccountCircle onClick={()=>{window.location = "/Signin"}}/>
+              <AccountCircle onClick={()=>{window.location = "/signin"}}/>
             </IconButton>
           </Tooltip>
         </div>
