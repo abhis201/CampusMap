@@ -9,25 +9,42 @@ import {
     useSetRecoilState
 } from 'recoil';
 import axios from "axios";
-import {BASE_URL} from "./config.js";
-import {useEffect} from "react";
+import { BASE_URL } from "./config.js";
+import { useEffect, useState } from "react";
 
 function App() {
+    const [markers, setMarkers] = useState([]);
+
+    const handleSearchItemClick = (item) => {
+        const newMarker = {
+            id: item.Name,
+            position: item.location,
+            onClick: () => {
+                alert(item.Name + " Marker Clicked");
+                window.location.reload();
+            },
+        };
+
+        setMarkers((prevMarkers) => [...prevMarkers, newMarker]);
+    };
+
     return (
         <RecoilRoot>
-            <div style={{width: "100vw",
+            <div style={{
+                width: "100vw",
                 height: "100vh",
-                backgroundColor: "#eeeeee"}}
+                backgroundColor: "#eeeeee"
+            }}
             >
-                    <Router>
-                        <Navbar />
-                        <InitUser />
-                        <Routes>
-                            <Route path={"/signin"} element={<Signin />} />
-                            <Route path={"/signup"} element={<Signup />} />
-                            <Route path={"/"} element={<CampusMap />} />
-                        </Routes>
-                    </Router>
+                <Router>
+                    <Navbar onSearchItemClick={handleSearchItemClick} />
+                    <InitUser />
+                    <Routes>
+                        <Route path={"/signin"} element={<Signin />} />
+                        <Route path={"/signup"} element={<Signup />} />
+                        <Route path={"/"} element={<CampusMap markers={markers} />} />
+                    </Routes>
+                </Router>
             </div>
         </RecoilRoot>
     );
@@ -36,7 +53,7 @@ function App() {
 
 function InitUser() {
     const setUser = useSetRecoilState(userState);
-    const init = async() => {
+    const init = async () => {
         try {
             const response = await axios.get(`${BASE_URL}/admin/me`, {
                 headers: {

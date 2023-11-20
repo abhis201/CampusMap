@@ -16,13 +16,12 @@ function Signup() {
 
     return <div>
             <div style={{
-                paddingTop: 150,
-                marginBottom: 10,
                 display: "flex",
-                justifyContent: "center"
+                justifyContent: "center",
+                marginBottom: 10
             }}>
                 <Typography variant={"h6"}>
-                Welcome to Coursera. Sign up below
+                Sign up below
                 </Typography>
             </div>
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -62,7 +61,7 @@ function Signup() {
                         navigate("/courses")
                     }}
 
-                > Signup</Button>
+                > Sign up</Button>
             </Card>
         </div>
     </div>
