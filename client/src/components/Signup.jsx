@@ -10,6 +10,7 @@ import {userState} from "../store/atoms/user.js";
 
 function Signup() {
     const [email, setEmail] = useState("")
+    const [puid, setPuid] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
     const setUser = useSetRecoilState(userState);
@@ -26,6 +27,15 @@ function Signup() {
             </div>
         <div style={{display: "flex", justifyContent: "center"}}>
             <Card varint={"outlined"} style={{width: 400, padding: 20}}>
+            <TextField
+                    onChange={(event) => {
+                        setPuid(event.target.value);
+                    }}
+                    fullWidth={true}
+                    label="PUID"
+                    variant="outlined"
+                />
+                <br/><br/>
                 <TextField
                     onChange={(event) => {
                         setEmail(event.target.value);
@@ -51,6 +61,7 @@ function Signup() {
                     variant="contained"
                     onClick={async() => {
                         const response = await axios.post(`${BASE_URL}/admin/signup`, {
+                            puid: puid,
                             username: email,
                             password: password
                         })
@@ -58,7 +69,7 @@ function Signup() {
                         localStorage.setItem("token", data.token);
                         // window.location = "/"
                         setUser({userEmail: email, isLoading: false})
-                        navigate("/courses")
+                        navigate("/")
                     }}
 
                 > Sign up</Button>
