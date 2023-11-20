@@ -1,0 +1,62 @@
+[
+    {
+        "Name": "Griffin Hall",
+        "location": { "lat": 41.580631125122395, "lng": -87.46984039271041 }
+    },
+    {
+        "Name": "Nils Biotech",
+        "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+    },
+    {
+        "Name": "Lawshe Hall",
+        "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 }
+    },
+    {
+        "Name": "Student Union Library",
+        "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 }
+    },
+    {
+        "Name": "Peregrine Hall",
+        "location": { "lat": 41.58025573654565, "lng": -87.47236253747899 }
+    },
+    {
+        "Name": "Porter Hall",
+        "location": {"lat": 41.58525541600925, "lng": -87.47333305996557}
+    },
+    {
+        "Name": "Gyte Building",
+        "location": {"lat": 41.585208582400924, "lng": -87.47530541214874 }
+    },
+    {
+        "Name": "Classroom Office",
+        "location": {"lat": 41.586695532881826, "lng": -87.47533671932626 }
+    },
+    {
+        "Name": "Anderson Building",
+        "location": {"lat": 41.58767900887252, "lng": -87.47547760162504 }
+    },
+    {
+        "Name": "Potters Building",
+        "location": {"lat": 41.58600474912222, "lng": -87.47554021598008 }
+    },
+    {
+        "Name": "Parking Garage",
+        "location": {"lat": 41.58538420825695, "lng": -87.4720651192764}
+    },
+    {
+        "Name": "Fitness and Recreation Center",
+        "location": {"lat": 41.58057467112049, "lng": -87.47433846210527}
+    },
+    {
+        "Name": "Counselling Center",
+        "location": {"lat": 41.57975356164138, "lng": -87.47529762696 }
+    },
+    {
+        "Name": "Riley Center Healthcare",
+        "location": {"lat": 41.57942606310387, "lng": -87.47516222117153 }
+    },
+    {
+        "Name": "Powers Building",
+        "location": {"lat": 41.58600822485555, "lng": -87.4754870100478 }
+    }
+]
