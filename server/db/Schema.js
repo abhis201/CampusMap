@@ -40,6 +40,8 @@ const courseSchema = new mongoose.Schema({
 /*
 This will be the data schema used for the buildings
 buildingName: name of the building i.e. Classroom Office Building
+buildingLat: latitude of the building
+buildingLng: longitude of the building
 buildingPicture: path of building picture
 websiteLink: url to page on pnw.edu
 searchTerms: additional names that may be used to search i.e. CLO
@@ -47,6 +49,14 @@ searchTerms: additional names that may be used to search i.e. CLO
 const buildingSchema = new mongoose.Schema({
   buildingName: {
     type: String,
+    required: true
+  },
+  buildingLat: {
+    type: Number,
+    required: true
+  },
+  buildingLng: {
+    type: Number,
     required: true
   },
   buildingPicture: {
