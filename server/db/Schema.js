@@ -104,6 +104,7 @@ const officeSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin', adminSchema);
 const Building = mongoose.model('Building', buildingSchema);
+const Place = mongoose.model('Place', placeSchema);
 const Office = mongoose.model('Office', officeSchema);
 const Course = mongoose.model('Course', courseSchema);
 
@@ -111,6 +112,7 @@ module.exports = {
   User,
   Admin,
   Building,
+  Place,
   Office,
   Course
 }
