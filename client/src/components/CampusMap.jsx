@@ -1,42 +1,35 @@
-import React, {useState} from 'react';
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const CampusMap = ({ markers }) => {
 
-  // Set your Google Maps API key here
-  const apiKey = import.meta.env.VITE_GMAP_API_KEY;
-
-  // Coordinates for your campus boundaries
-  const campusBounds = {
-    north: Number(import.meta.env.VITE_NORTH),
-    south: Number(import.meta.env.VITE_SOUTH),
-    west: Number(import.meta.env.VITE_WEST),
-    east: Number(import.meta.env.VITE_EAST),
-  };
-
+  const campusLat = import.meta.env.VITE_CENTER_LAT
+  const campusLng = import.meta.env.VITE_CENTER_LNG
   // Center coordinates for your map
-  const campusCoordinates = { 
-    lat: Number(import.meta.env.VITE_CENTER_LAT), 
-    lng: Number(import.meta.env.VITE_CENTER_LNG)
-  };
+  const campusCoordinates = [
+    campusLat, campusLng
+  ];
 
   return (
-    <LoadScript id='mapComp' googleMapsApiKey={apiKey}>
-      <GoogleMap
-        center={campusCoordinates}
-        zoom={16}
-        mapContainerStyle={{ width: '100vw', height: '93vh' }}
-        onBoundsChanged={campusBounds}
-      >
-        {markers.map((marker) => (
-          <MarkerF
+    <MapContainer center={campusCoordinates} zoom={17} style={{ width: '100vw', height: '93vh', zIndex:0 }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+
+      {markers.map((marker) => (
+        <Marker
           key={marker.id}
           position={marker.position}
-          onClick={marker.onClick}
-          />
-        ))}
-      </GoogleMap>
-    </LoadScript>
+          eventHandlers={{
+            click: () => marker.onClick(),
+          }}
+        >
+          <Popup>{marker.id}</Popup>
+        </Marker>
+      ))}
+    </MapContainer>
   );
 };
 
