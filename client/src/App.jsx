@@ -11,6 +11,8 @@ import {
 import axios from "axios";
 import { BASE_URL } from "./config.js";
 import { useEffect, useState } from "react";
+import { Sideload } from './components/Sideload.jsx';
+import { FilterButtons } from './components/FilterButtons.jsx';
 
 function App() {
     const [markers, setMarkers] = useState([]);
@@ -43,6 +45,8 @@ function App() {
                         <Route path={"/signin"} element={<Signin />} />
                         <Route path={"/signup"} element={<Signup />} />
                         <Route path={"/"} element={<CampusMap markers={markers} />} />
+                        <Route path={"/sideload"} element={<Sideload/>} />
+                        <Route path={"/filters"} element={<FilterButtons/>} />
                     </Routes>
                 </Router>
             </div>
