@@ -85,7 +85,7 @@ const placeSchema = new mongoose.Schema({
     required: true
   },
   placeBuilding: {
-    type: ObjectId,
+    type: [mongoose.ObjectId],
     required: true
   },
   placeFloor: {

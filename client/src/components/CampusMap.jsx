@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, Polygon, FeatureGroup, TileLayer, LayersControl, useMapEvent,  Marker, Popup} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const CampusMap = ({ markers }) => {
@@ -10,6 +10,18 @@ const CampusMap = ({ markers }) => {
   const campusCoordinates = [
     campusLat, campusLng
   ];
+
+  const campus_region  = [
+    [ 41.5884388,-87.4761925],
+    [41.5810719,-87.4762354],
+    [41.581104,-87.4731241],
+    [41.5847635,-87.4732099],
+    [41.5847635,-87.4713431],
+    [41.5884388,-87.4713645],
+    [41.5884388,-87.4761925],
+];
+
+  const placeColor = { color: "#2596be"};
 
   return (
     <MapContainer center={campusCoordinates} zoom={17} style={{ width: '100vw', height: '93vh', zIndex:0 }}>
@@ -29,6 +41,7 @@ const CampusMap = ({ markers }) => {
           <Popup>{marker.id}</Popup>
         </Marker>
       ))}
+      <Polygon pathOptions={placeColor} positions={campus_region} />
     </MapContainer>
   );
 };
