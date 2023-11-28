@@ -3,7 +3,7 @@
     "name": "Griffin Hall",
     "location": { "lat": 41.580631125122395, "lng": -87.46984039271041 },
     "floor_count": 4,
-    "floor_plans": [""],
+    "floor_plans": [],
     "image": "https://cdn.greatnews.life/wp-content/uploads/images/purdue-cal-griffin.jpg",
     "description": "University village dorms. Griffin Hall (GRIF) is located at the southeast corner of 173rd St. and Wicker Ave. ",
     "departments": [],
@@ -81,7 +81,7 @@
     "name": "Anderson Building",
     "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
     "floor_count": 3,
-    "floor_plans":["../client/public/FloorPlans/Anderson Floor Plan.png"],
+    "floor_plans":["../assets/FloorPlans/Anderson Floor Plan.png"],
     "image": "https://media.graphassets.com/resize=fit:crop,height:650,width:908/output=format:webp/if1L8jSxRmKYooXYPFVV",
     "description": "The Edward D. Anderson Building (ANDR) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and just south of 169th St. ANDR is at the northern end of the Peregrine Path, just north of the Classroom Office Building, and northwest of 169th Street Parking. There is a circle drive that extends off of Woodmar Ave. to the southwest entrance",
     "departments": [
@@ -113,7 +113,7 @@
     "name": "Fitness and Recreation Center",
     "location": { "lat": 41.58057467112049, "lng": -87.47433846210527 },
     "floor_count": 4,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:and9GcSaHYi0hrofvIipzGbav75imnahcKZr5BVazg&usqp=CaU",
+    "image": "https://www.pnw.edu/fitness-recreational-sports/wp-content/uploads/sites/6/2022/06/Join-the-Fun_Pingpong-900x600.jpg",
     "description": "The fitness & Recreation Center (fRnC) is located just south of 173rd Street on the Hammond Campus. The building is situated on the eastern side of the South 173rd Street Parking Lot, immediately to the west of Peregrine Hall. ",
     "departments": [],
     "abbr": "FRC"
@@ -131,7 +131,7 @@
     "name": "Riley Center Healthcare",
     "location": { "lat": 41.57942606310387, "lng": -87.47516222117153 },
     "floor_count": 4,
-    "image": "https://www.pnw.edu/counseling-center/wp-content/uploads/sites/30/2021/08/Riley_Center_Interior_Hammond_KCf_2021.22.07_aaron_Ramirez_and_Teniya_TaylorIMG_0259-900x600.jpg",
+    "image": "https://www.pnw.edu/wp-content/uploads/2023/07/Center-for-Healthy-Living-image-of-building-1024x576.jpg",
     "description": "The Counseling Center provides counseling sessions both in-person and virtually through a HIPaa compliant telehealth platform, doxy.me.for telehealth counseling, student must be physically located in Indiana during the telehealth appointment.",
     "departments": [],
     "abbr": "Rilley"
@@ -140,7 +140,7 @@
     "name": "Powers Building",
     "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
     "floor_count": 4,
-    "image": "https://www.pnw.edu/information-services/wp-content/uploads/sites/80/2022/05/CSC_doornumbers-900x600.jpg",
+    "image": "https://pnwathletics.com/custompages/gallery/Powers_PNW_Outing_2022/20220620_DB_Powers_Golf_Outing1.JPG?width=1024&height=682",
     "description": "The andrey a. Potter Building (POTT) is located in the northwest corner of the Hammondcampus, east of Woodmar ave. and west of 169th Street Parking, southeast of the Classroom Office Building, just north of the Gyte annex Building and just east the Powers Building. POTT is located on the Peregrine Path.",
     "departments": ["CIVS", "Customer Service"],
     "abbr": "Powers"

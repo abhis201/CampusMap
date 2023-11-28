@@ -17,11 +17,13 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    zIndex: 2
   };
 
 const showModal = (name, floor, floor_plan, open, setOpen) => {
   const handleClose = () => setOpen(false);
 
+  console.log({floor_plan})
   return (
     <div>
       <Modal
@@ -47,7 +49,7 @@ const Sideload = ({ data }) => {
     }
 
     const [sourceCoords, setSourceCoords] = useState(null);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
 
     useEffect(() => {
         // Check if Geolocation is supported by the browser
@@ -76,7 +78,7 @@ const Sideload = ({ data }) => {
                 left: 0,
                 width: "30vw",
                 height: "91vh",
-                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
                 padding: 10,
                 position: "absolute",
                 zIndex: 1,
@@ -125,8 +127,7 @@ const Sideload = ({ data }) => {
                             }}
                             onClick={()=>{
                                 if(data.floor_plans[index]){
-                                    console.log(data.floor_plans)
-                                    showModal(data.name, data.floor_plans[index], open, setOpen)
+                                    showModal(data.name,index+1, data.floor_plans[index], open, setOpen)
                                 }
                             }}
                         >

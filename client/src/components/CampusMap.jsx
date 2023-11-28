@@ -30,8 +30,6 @@ const CampusMap = ({ marker }) => {
   ];
 
   const showBuildingMarkers = (data) => {
-    // console.log("Showing Buildings In Campus Map component")
-    // console.log(data)
     if (data) {
       setBuildings(data);
       console.log("building Data")
@@ -84,11 +82,29 @@ const CampusMap = ({ marker }) => {
 
   let zoom = 16;
 
-  // const customIcon = new L.Icon({
-  //   iconUrl: 'https://www.designi.com.br/images/preview/10433428.jpg',
-  //   iconSize: [32, 32], // Adjust the size of the icon as needed
-  //   iconAnchor: [16, 32], // Position the icon anchor to the bottom center
-  // });
+  const redIcon = new L.Icon({
+    iconUrl: '../../public/icons/pin.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
+
+  const greenIcon = new L.Icon({
+    iconUrl: '../../public/icons/green.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
+
+  const blueIcon = new L.Icon({
+    iconUrl: '../../public/icons/location.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
+
+  const yellowIcon = new L.Icon({
+    iconUrl: '../../public/icons/yellow.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
 
   return (
     <div>
@@ -109,7 +125,7 @@ const CampusMap = ({ marker }) => {
           <Marker
             key={bld.id}
             position={bld.position}
-            // icon={customIcon}
+            icon={redIcon}
             eventHandlers={{
               click: () => {
                 // alert(marker.id + " marker clicked!");
@@ -125,7 +141,7 @@ const CampusMap = ({ marker }) => {
           <Marker
             key={bld.id}
             position={bld.position}
-            // icon={customIcon}
+            icon={greenIcon}
             eventHandlers={{
               click: () => {
                 console.log("Department Marker clicked for: "+bld.id)
@@ -140,7 +156,7 @@ const CampusMap = ({ marker }) => {
           <Marker
             key={prk.id}
             position={prk.position}
-            // icon={customIcon}
+            icon={yellowIcon}
             eventHandlers={{
               click: () => {
                 console.log("Parking Marker Clicked for: "+prk.id)
@@ -156,7 +172,7 @@ const CampusMap = ({ marker }) => {
           <Marker
             key={marker.id}
             position={marker.position}
-            // icon={customIcon}
+            icon={blueIcon}
             eventHandlers={{
               click: () => {
                 // alert(marker.id + " marker clicked!");
