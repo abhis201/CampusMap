@@ -1,0 +1,77 @@
+[
+  {
+    "Name": "Biology",
+    "Building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+  },
+
+  {
+    "Name": "Finance",
+    "Building": "Lawshe Hall",
+    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 }
+  },
+
+  {
+    "Name": "Admission",
+    "Building": "Lawshe Hall",
+    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 }
+  },
+
+  {
+    "Name": "Maths",
+    "Building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+  },
+  {
+    "Name": "Nursing",
+    "Building": "Nils Biotech",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+  },
+
+  {
+    "Name": "Chemistry",
+    "Building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+  },
+  {
+    "Name": "Student Life",
+    "Building": "Student Union Library",
+    "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 }
+  },
+
+  {
+    "Name": "arts and crafts",
+    "Building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+  },
+
+  {
+    "Name": "Computer And information Technologys",
+    "Building": "Anderson Building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 }
+  },
+
+  {
+    "Name": "Industrial Technology",
+    "Building": "Anderson Building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 }
+  },
+
+  {
+    "Name": "Graphical Technology",
+    "Building": "Anderson Building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 }
+  },
+
+  {
+    "Name": "CIVIS",
+    "Building": "Powers Building",
+    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 }
+  },
+
+  {
+    "Name": "Customer Service",
+    "Building": "Powers Building",
+    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 }
+  }
+]
