@@ -1,21 +1,101 @@
-import { Checkbox } from "@mui/material"
+import { Checkbox, Tooltip } from "@mui/material"
+import zIndex from "@mui/material/styles/zIndex"
+// import { Modal } from '@mui/base/Modal';
+import { useState } from "react"
+import './Modal.css'
+// import buildings from '../../../common/buiding.json';
+import parking from '../../../common/parking.json'
 
 
+const Modal = () => {
+    
+    // const toggleModal = ()=>{
+    //    setModal(!modal)
+    // }
+    const reload = () => {
+        // setModal(false);
+        window.location.reload();
+    }
+    const itr = parking
+    return (
+        
+        <div>
+            <div className="modal">
+                <div className="overlay">
+                    <div className="modal-content">
+                        <button
+                            onClick={reload}
+                            className="btn-modal">
+                            X
+                        </button>
+                        <h2>Buildings</h2>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
+        {/* Abbr */}
+        
+         {
+        
+         itr.map((obj) => (
+        <Tooltip title={obj.Name}>
+        <button
+          key={obj.id}
+          onClick={() => console.log(`Button ${obj.id} clicked`)}
+          style={{
+            width: '100%',
+            padding: '10px',
+            fontSize: '16px',
+            backgroundColor: '#3498db',
+            color: '#fff',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+       
+
+          {obj.Abbr}
+        </button>
+        </Tooltip>
+      ))}
+      
+    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 export const FilterButtons = () => {
-    return(
-        <div style={{display:"flex", flexDirection:"column", left:1,top:20}}>
-            <div style={{display: 'flex'}}>
-                <Checkbox></Checkbox>
-                <button>Buildings</button>
+    const[value,setValue]= useState("")
+    const [modal, setModal] = useState(false);
+    const showModal = () => {
+        setModal(true)
+
+    }
+    
+    return (
+        <div>
+            <div style={{ position: "absolute", right: 30 }}>
+                <div style={{ display: "flex", flexDirection: "column", left: 1, top: 20, zIndex: 2, marginTop: 100, }}>
+                    <div style={{ display: 'flex' }}>
+                        <Checkbox></Checkbox>
+                        <button onClick={showModal}>
+                            Buildings</button>
+                    </div>
+                    <div style={{ display: "flex" }}>
+                        <Checkbox></Checkbox>
+                        <button onClick={showModal}>Offices</button>
+                    </div>
+                    <div style={{ display: "flex" }}>
+                        <Checkbox></Checkbox>
+                        <button onClick={showModal}>Parking</button>
+                    </div>
+                </div>
+                <div style={{ zIndex: 0 }}>
+
+                </div>
             </div>
-            <div style={{display:"flex"}}>
-                <Checkbox></Checkbox>
-                <button>Buildings</button>
-            </div>
-            <div style={{display: "flex"}}>
-                <Checkbox></Checkbox>
-                <button>Buildings</button>
-            </div>
+            {
+                modal && <Modal />
+            }
         </div>
     )
 }
