@@ -3,20 +3,16 @@ import zIndex from "@mui/material/styles/zIndex"
 // import { Modal } from '@mui/base/Modal';
 import { useState } from "react"
 import './Modal.css'
-// import buildings from '../../../common/buiding.json';
+import buildings from '../../../common/buiding.json';
 import parking from '../../../common/parking.json'
 
 
-const Modal = () => {
-    
-    // const toggleModal = ()=>{
-    //    setModal(!modal)
-    // }
+const Modal = ({itr}) => {
     const reload = () => {
         // setModal(false);
         window.location.reload();
     }
-    const itr = parking
+    const heading = itr==buildings?"Buildings":itr==parking?"Parking":"Departments";
     return (
         
         <div>
@@ -28,17 +24,18 @@ const Modal = () => {
                             className="btn-modal">
                             X
                         </button>
-                        <h2>Buildings</h2>
+                    
+                        <h2>{heading}</h2>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
         {/* Abbr */}
         
          {
-        
+            
          itr.map((obj) => (
         <Tooltip title={obj.Name}>
         <button
-          key={obj.id}
-          onClick={() => console.log(`Button ${obj.id} clicked`)}
+          key={obj.Name}
+          onClick={() => console.log(`Button ${obj.Name} clicked`)}
           style={{
             width: '100%',
             padding: '10px',
@@ -66,9 +63,17 @@ const Modal = () => {
 export const FilterButtons = () => {
     const[value,setValue]= useState("")
     const [modal, setModal] = useState(false);
-    const showModal = () => {
+    const showModalB = () => {
         setModal(true)
-
+        setValue(buildings)
+    }
+    const showModalP = () => {
+        setModal(true)
+        setValue(parking)
+    }
+    const showModalD = () => {
+        setModal(true)
+        setValue(dept)
     }
     
     return (
@@ -77,16 +82,16 @@ export const FilterButtons = () => {
                 <div style={{ display: "flex", flexDirection: "column", left: 1, top: 20, zIndex: 2, marginTop: 100, }}>
                     <div style={{ display: 'flex' }}>
                         <Checkbox></Checkbox>
-                        <button onClick={showModal}>
+                        <button onClick={showModalB}>
                             Buildings</button>
                     </div>
                     <div style={{ display: "flex" }}>
                         <Checkbox></Checkbox>
-                        <button onClick={showModal}>Offices</button>
+                        <button onClick={showModalD}>Offices</button>
                     </div>
                     <div style={{ display: "flex" }}>
                         <Checkbox></Checkbox>
-                        <button onClick={showModal}>Parking</button>
+                        <button onClick={showModalP}>Parking</button>
                     </div>
                 </div>
                 <div style={{ zIndex: 0 }}>
@@ -94,7 +99,7 @@ export const FilterButtons = () => {
                 </div>
             </div>
             {
-                modal && <Modal />
+                modal && <Modal itr={value} />
             }
         </div>
     )
