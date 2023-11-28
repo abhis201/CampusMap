@@ -46,8 +46,8 @@ const Navbar = ({ onSearchItemClick }) => {
           </Typography>
         </div>
 
-        <Tooltip title="19% Change of Precipitation">
-          <Typography component="div">Cloudy - 60°F / 16°C</Typography>
+        <Tooltip title="80% Change of Snowing">
+          <Typography component="div">Rain - 40°F / 4°C</Typography>
         </Tooltip>
 
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -68,16 +68,16 @@ const Navbar = ({ onSearchItemClick }) => {
               {searchItem && (
                 <ul style={{ listStyleType: 'none', position: 'absolute', top: '100%', left: 0, background: 'black', zIndex: 1, padding: '10px', boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)' }}>
                   {buildings.filter(item => {
-                    return searchItem.toLowerCase() === '' ? item : item.Name.toLowerCase().includes(searchItem.toLowerCase())
+                    return searchItem.toLowerCase() === '' ? item : item.name.toLowerCase().includes(searchItem.toLowerCase())
                   }).map((item) => (
                     <li
-                      key={item.Name}
+                      key={item.name}
                       onClick={() => handleSearchItemClick(item)}
                     >
                       <button
                         style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'white' }}
                       >
-                        {item.Name}
+                        {item.name}
                       </button>
                     </li>
                   ))}

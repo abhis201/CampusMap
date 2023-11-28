@@ -8,36 +8,25 @@ import { RecoilRoot, useSetRecoilState } from "recoil";
 import axios from "axios";
 import { BASE_URL } from "./config.js";
 import { useEffect, useState } from "react";
-import Sideload from "./components/Sideload.jsx";
 import { FilterButtons } from "./components/FilterButtons.jsx";
 import Navigate from "./components/Navigate.jsx";
 
 function App() {
   const [marker, setMarker] = useState(null);
 
-  //For testing /sideload
-  let testdata = {
-    name: "Student Union Library",
-    position: { "lat": 41.580631125122395, "lng": -87.46984039271041 },
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt odit, totam a saepe doloremque adipisci, quam sapiente in incidunt id inventore necessitatibus tempore? Animi, minus nemo! Consectetur doloremque error ducimus?",
-    image:
-      "https://www.pnw.edu/facilities/wp-content/uploads/sites/70/2023/08/22018-ASG_Purdue_Persp02-7_dc_750x500.jpg",
-    floor_count: 3,
-    location: "41.58486994522156, -87.47332743172757",
-  };
-
   const handleSearchItemClick = (item) => {
+    console.log(item)
     setMarker({
-      "id": item.Name,
+      "id": item.name,
       "position": item.location,
       "sideload": {
-        'name': item.Name,
-        'description': item.description,
-        'image': item.image,
-        'floor_count': item.floor_count,
-        "latitude": item.location.lat,
-        "longitude": item.location.lng
+        name: item.name,
+        description: item.description,
+        image: item.image,
+        floor_count: item.floor_count,
+        latitude: item.location.lat,
+        longitude: item.location.lng,
+        floor_plans: item.floor_plans
       },
     });
 
@@ -59,12 +48,8 @@ function App() {
             <Route path={"/signin"} element={<Signin />} />
             <Route path={"/signup"} element={<Signup />} />
             <Route path={"/"} element={<CampusMap marker={marker} />} />
-            <Route
-              path={"/sideload"}
-              element={<Sideload data={testdata} />}
-            />
             <Route path={"/filters"} element={<FilterButtons />} />
-            <Route path={"/navigate"} element={<Navigate  dest={testdata.position}/>} />
+            <Route path={"/navigate"} element={<Navigate  dest={{ "lat": 41.58767900887252, "lng": -87.47547760162504 }}/>} />
           </Routes>
         </Router>
       </div>

@@ -1,11 +1,44 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Modal, Typography,Box } from "@mui/material";
 import { styled } from "@mui/system";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const StyledImage = styled("img")({
     maxWidth: "100%",
-    height: "auto",
+    height: "300px",
 });
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+const showModal = (name, floor, floor_plan, open, setOpen) => {
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="Floor Plan"
+      >
+        <Box sx={style}>
+          <Typography id={name} variant="h6" component="h2">
+            Floor {floor} Plan for {name}
+          </Typography>
+          <StyledImage src={floor_plan}></StyledImage>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
 
 const Sideload = ({ data }) => {
     if (!data) {
@@ -14,6 +47,7 @@ const Sideload = ({ data }) => {
     }
 
     const [sourceCoords, setSourceCoords] = useState(null);
+    const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
         // Check if Geolocation is supported by the browser
@@ -42,7 +76,7 @@ const Sideload = ({ data }) => {
                 left: 0,
                 width: "30vw",
                 height: "91vh",
-                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
                 padding: 10,
                 position: "absolute",
                 zIndex: 1,
@@ -52,7 +86,7 @@ const Sideload = ({ data }) => {
             <div>
                 <div style={{ textAlign: "right" }}>
                     <Button
-                        style={{ color: "red"}}
+                        style={{ color: "red" }}
                         onClick={() => {
                             window.location.reload();
                         }}
@@ -61,7 +95,9 @@ const Sideload = ({ data }) => {
                     </Button>
                 </div>
                 <div>
+                    <center>
                     <StyledImage src={data.image}></StyledImage>
+                    </center>
                     <br />
                     <br />
                     <Typography variant="h4" color={"gold"}>
@@ -87,6 +123,12 @@ const Sideload = ({ data }) => {
                                 backgroundColor: 'coral',
                                 color: "white",
                             }}
+                            onClick={()=>{
+                                if(data.floor_plans[index]){
+                                    console.log(data.floor_plans)
+                                    showModal(data.name, data.floor_plans[index], open, setOpen)
+                                }
+                            }}
                         >
                             {index + 1}
                         </Button>
@@ -94,7 +136,7 @@ const Sideload = ({ data }) => {
                 </div>
                 <div>
                     <Typography style={{ textAlign: "center", color: 'gray' }}>Click to</Typography>
-                    <Button style={{ backgroundColor: "green", color: "white" }} onClick={()=>{
+                    <Button style={{ backgroundColor: "green", color: "white" }} onClick={() => {
                         const url = `https://www.google.com/maps/dir/?api=1&origin=${sourceCoords.latitude},${sourceCoords.longitude}&destination=${data.latitude},${data.longitude}`
                         window.open(url, '_blank');
                     }}>

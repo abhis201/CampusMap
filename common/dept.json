@@ -1,77 +1,90 @@
 [
   {
-    "Name": "Biology",
-    "Building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+    "name": "Biology",
+    "building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
+    "abbr": "Bio"
   },
 
   {
-    "Name": "Finance",
-    "Building": "Lawshe Hall",
-    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 }
+    "name": "Finance",
+    "building": "Lawshe Hall",
+    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 },
+    "abbr":"Fin"
   },
 
   {
-    "Name": "Admission",
-    "Building": "Lawshe Hall",
-    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 }
+    "name": "Admission",
+    "building": "Lawshe Hall",
+    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 },
+    "abbr":"Admn"
   },
 
   {
-    "Name": "Maths",
-    "Building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+    "name": "Maths",
+    "building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
+    "abbr":"Math"
   },
   {
-    "Name": "Nursing",
-    "Building": "Nils Biotech",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
-  },
-
-  {
-    "Name": "Chemistry",
-    "Building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
-  },
-  {
-    "Name": "Student Life",
-    "Building": "Student Union Library",
-    "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 }
+    "name": "Nursing",
+    "building": "Nils Biotech",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
+    "abbr":"Nur"
   },
 
   {
-    "Name": "arts and crafts",
-    "Building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 }
+    "name": "Chemistry",
+    "building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
+    "abbr":"Chem"
+  },
+  {
+    "name": "Student Life",
+    "building": "Student Union Library",
+    "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 },
+    "abbr":"Life"
   },
 
   {
-    "Name": "Computer And information Technologys",
-    "Building": "Anderson Building",
-    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 }
+    "name": "Arts and Crafts",
+    "building": "Gyte",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
+    "abbr":"A&C"
   },
 
   {
-    "Name": "Industrial Technology",
-    "Building": "Anderson Building",
-    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 }
+    "name": "Computer And Information Technologys",
+    "building": "Anderson building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
+    "abbr":"CIT"
   },
 
   {
-    "Name": "Graphical Technology",
-    "Building": "Anderson Building",
-    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 }
+    "name": "Industrial Technology",
+    "building": "Anderson building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
+    "abbr":"Ind"
   },
 
   {
-    "Name": "CIVIS",
-    "Building": "Powers Building",
-    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 }
+    "name": "Graphical Technology",
+    "building": "Anderson building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
+    "abbr":"Grap"
   },
 
   {
-    "Name": "Customer Service",
-    "Building": "Powers Building",
-    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 }
+    "name": "CIVIS",
+    "building": "Powers building",
+    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
+    "abbr":"CIVS"
+  },
+
+  {
+    "name": "Customer Service",
+    "building": "Powers building",
+    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
+    "abbr":"Cust"
   }
 ]

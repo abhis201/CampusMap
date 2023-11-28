@@ -1,31 +1,66 @@
 import React, { useRef, useState, useEffect } from "react";
-import { MapContainer, Polygon, FeatureGroup, TileLayer, LayersControl, useMapEvent,  Marker, Popup} from 'react-leaflet';
+import { MapContainer, Polygon, FeatureGroup, TileLayer, LayersControl, useMapEvent, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import Sideload from "./Sideload";
+import { FilterButtons } from "./FilterButtons";
 import L from "leaflet";
 
 const CampusMap = ({ marker }) => {
   const [sideload, setSideload] = useState(null);
+  const [buildings, setBuildings] = useState([]);
+  const [depts, setDepts] = useState([]);
+  const [parkings, setParking] = useState([]);
 
   const markerClick = (markerData) => {
     console.log(markerData)
     setSideload(markerData);
   };
 
-  const campus_region  = [
-    [41.5884388,-87.4761925],
-    [41.5810719,-87.4762354],
+  const campus_region = [
+    [41.5884388, -87.4761925],
+    [41.5810719, -87.4762354],
     [41.577635130571736, -87.47553747827811],
     [41.57939902340338, -87.46829973614871],
     [41.58119961430525, -87.46837342356804],
     [41.581327458890264, -87.47329812900237],
-    [41.5847635,-87.4732099],
-    [41.5847635,-87.4713431],
-    [41.5884388,-87.4713645],
-    [41.5884388,-87.4761925],
-];
+    [41.5847635, -87.4732099],
+    [41.5847635, -87.4713431],
+    [41.5884388, -87.4713645],
+    [41.5884388, -87.4761925],
+  ];
 
-  const placeColor = { color: "#2596be"};
+  const showBuildingMarkers = (data) => {
+    // console.log("Showing Buildings In Campus Map component")
+    // console.log(data)
+    if (data) {
+      setBuildings(data);
+      console.log("building Data")
+      console.log(buildings)
+    }
+    else {
+      setBuildings(null);
+    }
+  }
+
+  const showParkMarkers = (data) => {
+    if (data) {
+      setParking(data);
+    }
+    else {
+      setParking(null);
+    }
+  }
+
+  const showDeptMarkers = (data) => {
+    if (data) {
+      setDepts(data);
+    }
+    else {
+      setDepts(null);
+    }
+  }
+
+  const placeColor = { color: "#2596be" };
 
   // //Shift map focus
   // const [mapKey, setMapKey] = useState(0); // Add state for the map key
@@ -70,6 +105,53 @@ const CampusMap = ({ marker }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
+        {buildings.map((bld) => (
+          <Marker
+            key={bld.id}
+            position={bld.position}
+            // icon={customIcon}
+            eventHandlers={{
+              click: () => {
+                // alert(marker.id + " marker clicked!");
+                markerClick(bld.sideload);
+              },
+            }}
+          >
+            <Popup>{bld.id}</Popup>
+          </Marker>
+        ))}
+
+        {depts.map((bld) => (
+          <Marker
+            key={bld.id}
+            position={bld.position}
+            // icon={customIcon}
+            eventHandlers={{
+              click: () => {
+                console.log("Department Marker clicked for: "+bld.id)
+              },
+            }}
+          >
+            <Popup>{bld.id}</Popup>
+          </Marker>
+        ))}
+
+        {parkings.map((prk) => (
+          <Marker
+            key={prk.id}
+            position={prk.position}
+            // icon={customIcon}
+            eventHandlers={{
+              click: () => {
+                console.log("Parking Marker Clicked for: "+prk.id)
+              },
+            }}
+          >
+            <Popup>Remaining Capacity: {prk.capacity}</Popup>
+          </Marker>
+        ))}
+
+
         {marker && (
           <Marker
             key={marker.id}
@@ -85,11 +167,12 @@ const CampusMap = ({ marker }) => {
             <Popup>{marker.id}</Popup>
           </Marker>
         )}
-          <Polygon pathOptions={placeColor} positions={campus_region} />
+        <Polygon pathOptions={placeColor} positions={campus_region} />
 
       </MapContainer>
-      
+
       {sideload && <Sideload data={sideload} />}
+      <FilterButtons showBlds={showBuildingMarkers} showDeps={showDeptMarkers} showParks={showParkMarkers} />
     </div>
   );
 };

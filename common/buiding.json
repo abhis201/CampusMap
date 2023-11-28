@@ -1,137 +1,148 @@
 [
-    {
-        "Name": "Griffin Hall",
-        "location": { "lat": 41.580631125122395, "lng": -87.46984039271041 },
-        "Floor count" : 4,
-        "image" : "https://cdn.greatnews.life/wp-content/uploads/images/purdue-cal-griffin.jpg", 
-        "Description" : "University village dorms",
-        "Departments":[],
-        "Abbr":"Griffin"
-    },
-    {
-        "Name": "Nils Biotech",
-        "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
-        "Floor count" : 3,
-        "image" : "https://images.adsttc.com/media/images/605b/87f2/f91c/8171/5b00/00eb/slideshow/005433_00_N83_letter.jpg?1616611301", 
-        "Description" : "Located on the Hammond campus, the building plays host to our nursing and biological sciences departments. Boasting an eye-catching design and close to 70,000 square feet of space, the building was created with two main goals in mind – to offer a wide array of spaces for students to work and collaborate in and also maintain flexibility for future growth and changing learning methods.",
-        "Departments":["Nursing", "Biology"],
-        "Abbr": "Nils"
-    },
-    {
-        "Name": "Lawshe Hall",
-        "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 },
-        "Floor count" : 2,
-        "image" : "https://www.pnw.edu/financial-aid/wp-content/uploads/sites/3/2020/02/lawshe-hall-concerto_900x600-900x600.jpg", 
-        "Description" : "CH Lawshe Hall (LAWS) is located in the southwest area of the Hammond campus, east of Woodmar Ave., north and west of North 173rd Street Parking, southwest of the Student Union & Library Building, and north of 173rd Street. LAWS is located at the southern end of the Peregrine Path .",
-        "Departments":["Finance","Admission"],
-        "Abbr": "Lawshe"
-    },
-    {
-        "Name": "Student Union Library",
-        "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 },
-        "Floor count" : 3,
-        "image" : "https://www.pnw.edu/wp-content/uploads/2022/10/PNWAlumniHallofFameWall_750x500.jpg", 
-        "Description" : "The Student Union and Library Building (SULB) is located in the north central part of theHammond campus, west of Ontario Ave., southeast of the Gyte Building, southwest of PorterHall, north of North 173rd Street Parking and just east of the Peregrine Path. ",
-        "Departments":["Student Life","y jean Chambers"],
-        "Abbr": "SULB"
-    },
-    {
-        "Name": "Peregrine Hall",
-        "location": { "lat": 41.58025573654565, "lng": -87.47236253747899 },
-        "Floor count" : 4,
-        "image" : "https://www.pnw.edu/housing/wp-content/uploads/sites/78/2020/01/Housing_Dorm_900x600-900x600.jpg", 
-        "Description" : "University village dorms",
-        "Departments":[],
-        "Abbr": "Peregrine"
-    },
-    {
-        "Name": "Porter Hall",
-        "location": {"lat": 41.58525541600925, "lng": -87.47333305996557},
-        "Floor count" : 4,
-        "image" : "https://www.pnw.edu/wp-content/uploads/2021/11/porter-snow-scaled_550x688-500x625.jpg", 
-        "Description" : "University village dorms",
-        "Departments":[],
-        "Abbr": "Porter"
-    },
-    {
-        "Name": "Gyte Building",
-        "location": {"lat": 41.585208582400924, "lng": -87.47530541214874 },
-        "Floor count" : 2,
-        "image" : "https://www.pnw.edu/crime-forensics/wp-content/uploads/sites/32/2021/11/Gyte_Building_Exterior_KCF_Hammond_2020.17-3-900x600.jpg", 
-        "Description" : "The Millard E. Gyte Building (GYTE) is located in the northwest corner of the Hammond campus,east of Woodmar Ave. and southwest of 169th Street parking, just south of the Gyte Annex Building, northwest of the Founders Plaza, and west of Porter Hall. GYTE is located on the Peregrine Path. ",
-        "Departments":["Biology","Organic Chemistry","Arts and Crafts"],
-        "Abbr": "Gyte"
-    },
-    {
-        "Name": "Classroom Office",
-        "location": {"lat": 41.586695532881826, "lng": -87.47533671932626 },
-        "Floor count" : 3,
-        "image" : "http://www.mksdarchitects.com/wp-content/uploads/2012/01/NCC-classroom.jpg", 
-        "Description" : "The Classroom Office Building (CLO) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and west of 169th Street Parking, just south of the Anderson Building and just north of the Powers Building and the Potter Building. CLO is located on the Peregrine Path.",
-        "Departments":["Maths","Statistics","Computer Science","Graphics technology"],
-        "Abbr": "CLO"
-    },
-    {
-        "Name": "Anderson Building",
-        "location": {"lat": 41.58767900887252, "lng": -87.47547760162504 },
-        "Floor count" : 3,
-        "image" : "https://www.google.co.in/url?sa=i&url=https%3A%2F%2Fwww.pnw.edu%2Fhammond-campus-summer-construction-updates%2F&psig=AOvVaw0UpAofPeiFFbUGTHNW3Uii&ust=1701242215650000&source=images&cd=vfe&opi=89978449&ved=0CAUQjB1qFwoTCMj6zqGT5oIDFQAAAAAdAAAAABAE", 
-        "Description" : "University village dorms",
-        "Departments":["Computer And information Technology","Industrial Technology","Graphical Technology"],
-        "Abbr": "Anderson"
-    },
-    {
-        "Name": "Potters Building",
-        "location": {"lat": 41.58600474912222, "lng": -87.47554021598008 },
-        "Floor count" : 2,
-        "image" : "hhttps://maps.app.goo.gl/ujtLiFHKsHWeBffc8", 
-        "Description" : "University village dorms",
-        "Departments":["phsycology","ECE"],
-        "Abbr": "Potters"
-    },
-    {
-        "Name": "Parking Garage",
-        "location": {"lat": 41.58538420825695, "lng": -87.4720651192764},
-        "Floor count" : 4,
-        "image" : "https://grist.org/wp-content/uploads/2013/06/apartment-building-parking-lot-courtyard-2.jpg?w=563", 
-        "Description" : "Place to park cars and other vehicles",
-        "Departments":[],
-        "Abbr": "Parking"
-    },
-    {
-        "Name": "Fitness and Recreation Center",
-        "location": {"lat": 41.58057467112049, "lng": -87.47433846210527},
-        "Floor count" : 4,
-        "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHYi0hroFvIipzGbAv75imnahcKZr5BVazg&usqp=CAU", 
-        "Description" : "The Fitness & Recreation Center (FRNC) is located just south of 173rd Street on the Hammond Campus. The building is situated on the eastern side of the South 173rd Street Parking Lot, immediately to the west of Peregrine Hall. ",
-        "Departments":[],
-        "Abbr": "FNRC"
-    },
-    {
-        "Name": "Counselling Center",
-        "location": {"lat": 41.57975356164138, "lng": -87.47529762696 },
-        "Floor count" : 4,
-        "image" : "https://www.pnw.edu/couple-family-therapy-center/wp-content/uploads/sites/31/2020/03/cftc8-900x600.jpg", 
-        "Description" : "The Counseling Center provides counseling sessions both in-person and virtually through a HIPAA compliant telehealth platform, doxy.me. For telehealth counseling, student must be physically located in Indiana during the telehealth appointment.",
-        "Departments":[],
-        "Abbr": "Counselling"
-    },
-    {
-        "Name": "Riley Center Healthcare",
-        "location": {"lat": 41.57942606310387, "lng": -87.47516222117153 },
-        "Floor count" : 4,
-        "image" : "https://www.pnw.edu/counseling-center/wp-content/uploads/sites/30/2021/08/Riley_Center_Interior_Hammond_KCF_2021.22.07_Aaron_Ramirez_and_Teniya_TaylorIMG_0259-900x600.jpg", 
-        "Description" : "The Counseling Center provides counseling sessions both in-person and virtually through a HIPAA compliant telehealth platform, doxy.me.For telehealth counseling, student must be physically located in Indiana during the telehealth appointment.",
-        "Departments":[],
-        "Abbr": "Rilley Center"
-    },
-    {
-        "Name": "Powers Building",
-        "location": {"lat": 41.58600822485555, "lng": -87.4754870100478 },
-        "Floor count" : 4,
-        "image" : "https://www.pnw.edu/information-services/wp-content/uploads/sites/80/2022/05/CSC_DoorNumbers-900x600.jpg", 
-        "Description" : "The Andrey A. Potter Building (POTT) is located in the northwest corner of the Hammondcampus, east of Woodmar Ave. and west of 169th Street Parking, southeast of the Classroom Office Building, just north of the Gyte Annex Building and just east the Powers Building. POTT is located on the Peregrine Path.",
-        "Departments":["CIVS","Customer Service"],
-        "Abbr": "Powers"
-    }
+  {
+    "name": "Griffin Hall",
+    "location": { "lat": 41.580631125122395, "lng": -87.46984039271041 },
+    "floor_count": 4,
+    "floor_plans": [""],
+    "image": "https://cdn.greatnews.life/wp-content/uploads/images/purdue-cal-griffin.jpg",
+    "description": "University village dorms. Griffin Hall (GRIF) is located at the southeast corner of 173rd St. and Wicker Ave. ",
+    "departments": [],
+    "abbr": "GRIF"
+  },
+  {
+    "name": "Nils Biotech",
+    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
+    "floor_count": 3,
+    "image": "https://images.adsttc.com/media/images/605b/87f2/f91c/8171/5b00/00eb/slideshow/005433_00_n83_letter.jpg?1616611301",
+    "description": "Located on the Hammond campus, the building plays host to our nursing and biological sciences departments. Boasting an eye-catching design and close to 70,000 square feet of space, the building was created with two main goals in mind – to offer a wide array of spaces for students to work and collaborate in and also maintain flexibility for future growth and changing learning methods.",
+    "departments": ["nursing", "Biology"],
+    "abbr": "NILS"
+  },
+  {
+    "name": "Lawshe Hall",
+    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 },
+    "floor_count": 2,
+    "image": "https://www.pnw.edu/financial-aid/wp-content/uploads/sites/3/2020/02/lawshe-hall-concerto_900x600-900x600.jpg",
+    "description": "CH Lawshe Hall (LaWS) is located in the southwest area of the Hammond campus, east of Woodmar ave., north and west of north 173rd Street Parking, southwest of the Student Union & Library Building, and north of 173rd Street. LaWS is located at the southern end of the Peregrine Path .",
+    "departments": ["Finance", "Admission"],
+    "abbr": "Lawshe"
+  },
+  {
+    "name": "Student Union Library",
+    "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 },
+    "floor_count": 3,
+    "image": "https://www.pnw.edu/wp-content/uploads/2020/03/PD-SUL-05_04_08-063_500x333.jpg",
+    "description": "The Student Union and Library Building (SULB) is located in the north central part of theHammond campus, west of Ontario ave., southeast of the Gyte Building, southwest of PorterHall, north of north 173rd Street Parking and just east of the Peregrine Path",
+    "departments": ["Student Life", "Y Jean Chambers"],
+    "abbr": "SULB"
+  },
+  {
+    "name": "Peregrine Hall",
+    "location": { "lat": 41.58025573654565, "lng": -87.47236253747899 },
+    "floor_count": 4,
+    "image": "https://www.pnw.edu/housing/wp-content/uploads/sites/78/2020/01/Housing_Dorm_900x600-900x600.jpg",
+    "description": "University village dorms. Peregrine Hall (PERG) is located at the southwest corner of 173rd St. and Wicker Ave. ",
+    "departments": [],
+    "abbr": "PERG"
+  },
+  {
+    "name": "Porter Hall",
+    "location": { "lat": 41.58525541600925, "lng": -87.47333305996557 },
+    "floor_count": 4,
+    "image": "https://pbs.twimg.com/profile_images/958054877770416129/0Amt40-W_400x400.jpg",
+    "description": "Gene Stratton Porter Hall (PORT) is located on the north side of the Hammond campus, west of the 169th St. Parking Garage, south of the 169th Street Parking lot, northeast of the Student Union & Library Building, east of the Gyte Building, and north of 171st Street",
+    "departments": [],
+    "abbr": "PORT"
+  },
+  {
+    "name": "Gyte Building",
+    "location": { "lat": 41.585208582400924, "lng": -87.47530541214874 },
+    "floor_count": 2,
+    "image": "https://www.pnw.edu/crime-forensics/wp-content/uploads/sites/32/2021/11/Gyte_Building_Exterior_KCf_Hammond_2020.17-3-900x600.jpg",
+    "description": "The Millard E. Gyte Building (GYTE) is located in the northwest corner of the Hammond campus,east of Woodmar ave. and southwest of 169th Street parking, just south of the Gyte annex Building, northwest of the founders Plaza, and west of Porter Hall. GYTE is located on the Peregrine Path. ",
+    "departments": ["Biology", "Organic Chemistry", "arts and Crafts"],
+    "abbr": "GYTE"
+  },
+  {
+    "name": "Classroom Office",
+    "location": { "lat": 41.586695532881826, "lng": -87.47533671932626 },
+    "floor_count": 3,
+    "image": "http://www.mksdarchitects.com/wp-content/uploads/2012/01/nCC-classroom.jpg",
+    "description": "The Classroom Office Building (CLO) is located in the northwest corner of the Hammond campus, east of Woodmar ave. and west of 169th Street Parking, just south of the anderson Building and just north of the Powers Building and the Potter Building. CLO is located on the Peregrine Path.",
+    "departments": [
+      "Maths",
+      "Statistics",
+      "Computer Science",
+      "Graphics technology"
+    ],
+    "abbr": "CLO"
+  },
+  {
+    "name": "Anderson Building",
+    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
+    "floor_count": 3,
+    "floor_plans":["../client/public/FloorPlans/Anderson Floor Plan.png"],
+    "image": "https://media.graphassets.com/resize=fit:crop,height:650,width:908/output=format:webp/if1L8jSxRmKYooXYPFVV",
+    "description": "The Edward D. Anderson Building (ANDR) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and just south of 169th St. ANDR is at the northern end of the Peregrine Path, just north of the Classroom Office Building, and northwest of 169th Street Parking. There is a circle drive that extends off of Woodmar Ave. to the southwest entrance",
+    "departments": [
+      "Computer and Information Technology",
+      "Industrial Technology",
+      "Graphical Technology"
+    ],
+    "abbr": "Ande"
+  },
+  {
+    "name": "Potters Building",
+    "location": { "lat": 41.58600474912222, "lng": -87.47554021598008 },
+    "floor_count": 2,
+    "image": "hhttps://maps.app.goo.gl/ujtLifHKsHWeBffc8",
+    "description": "University village dorms",
+    "departments": ["phsycology", "ECE"],
+    "abbr": "Potters"
+  },
+  {
+    "name": "Parking Garage",
+    "location": { "lat": 41.58538420825695, "lng": -87.4720651192764 },
+    "floor_count": 4,
+    "image": "https://grist.org/wp-content/uploads/2013/06/apartment-building-parking-lot-courtyard-2.jpg?w=563",
+    "description": "Place to park cars and other vehicles",
+    "departments": [],
+    "abbr": "Parking"
+  },
+  {
+    "name": "Fitness and Recreation Center",
+    "location": { "lat": 41.58057467112049, "lng": -87.47433846210527 },
+    "floor_count": 4,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:and9GcSaHYi0hrofvIipzGbav75imnahcKZr5BVazg&usqp=CaU",
+    "description": "The fitness & Recreation Center (fRnC) is located just south of 173rd Street on the Hammond Campus. The building is situated on the eastern side of the South 173rd Street Parking Lot, immediately to the west of Peregrine Hall. ",
+    "departments": [],
+    "abbr": "FRC"
+  },
+  {
+    "name": "Counselling Center",
+    "location": { "lat": 41.57975356164138, "lng": -87.47529762696 },
+    "floor_count": 4,
+    "image": "https://www.pnw.edu/couple-family-therapy-center/wp-content/uploads/sites/31/2020/03/cftc8-900x600.jpg",
+    "description": "The Counseling Center provides counseling sessions both in-person and virtually through a HIPaa compliant telehealth platform, doxy.me. for telehealth counseling, student must be physically located in Indiana during the telehealth appointment.",
+    "departments": [],
+    "abbr": "Couns"
+  },
+  {
+    "name": "Riley Center Healthcare",
+    "location": { "lat": 41.57942606310387, "lng": -87.47516222117153 },
+    "floor_count": 4,
+    "image": "https://www.pnw.edu/counseling-center/wp-content/uploads/sites/30/2021/08/Riley_Center_Interior_Hammond_KCf_2021.22.07_aaron_Ramirez_and_Teniya_TaylorIMG_0259-900x600.jpg",
+    "description": "The Counseling Center provides counseling sessions both in-person and virtually through a HIPaa compliant telehealth platform, doxy.me.for telehealth counseling, student must be physically located in Indiana during the telehealth appointment.",
+    "departments": [],
+    "abbr": "Rilley"
+  },
+  {
+    "name": "Powers Building",
+    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
+    "floor_count": 4,
+    "image": "https://www.pnw.edu/information-services/wp-content/uploads/sites/80/2022/05/CSC_doornumbers-900x600.jpg",
+    "description": "The andrey a. Potter Building (POTT) is located in the northwest corner of the Hammondcampus, east of Woodmar ave. and west of 169th Street Parking, southeast of the Classroom Office Building, just north of the Gyte annex Building and just east the Powers Building. POTT is located on the Peregrine Path.",
+    "departments": ["CIVS", "Customer Service"],
+    "abbr": "Powers"
+  }
 ]
