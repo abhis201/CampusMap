@@ -1,4 +1,4 @@
-import { Button, Modal, Typography,Box } from "@mui/material";
+import { Button, Modal, Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import React, { useState, useEffect } from "react";
 
@@ -7,66 +7,42 @@ const StyledImage = styled("img")({
     height: "300px",
 });
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    zIndex: 2
-  };
+const FloorImage = styled("img")({
+    maxWidth: "100%",
+    height: "auto",
+});
 
-const showModal = (name, floor, floor_plan, open, setOpen) => {
-  const handleClose = () => setOpen(false);
-
-  console.log({floor_plan})
-  return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="Floor Plan"
-      >
-        <Box sx={style}>
-          <Typography id={name} variant="h6" component="h2">
-            Floor {floor} Plan for {name}
-          </Typography>
-          <StyledImage src={floor_plan}></StyledImage>
-        </Box>
-      </Modal>
-    </div>
-  );
+export const getLocation = async (setter) => {
+    // Check if Geolocation is supported by the browser
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                // Extract latitude and longitude from the position object
+                const { latitude, longitude } = position.coords;
+                setter({ latitude, longitude });
+            },
+            (error) => {
+                console.error('Error getting location:', error.message);
+            }
+        );
+    } else {
+        console.error('Geolocation is not supported by your browser.');
+    }
 }
 
 const Sideload = ({ data }) => {
+
     if (!data) {
         console.log("no Sideload data");
         return null; // Render nothing if sideload data is not available
     }
 
     const [sourceCoords, setSourceCoords] = useState(null);
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
+    const [floor, setFloor] = useState(null);
 
     useEffect(() => {
-        // Check if Geolocation is supported by the browser
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    // Extract latitude and longitude from the position object
-                    const { latitude, longitude } = position.coords;
-                    setSourceCoords({ latitude, longitude });
-                },
-                (error) => {
-                    console.error('Error getting location:', error.message);
-                }
-            );
-        } else {
-            console.error('Geolocation is not supported by your browser.');
-        }
+        getLocation(setSourceCoords)
     }, []);
 
     return (
@@ -86,11 +62,12 @@ const Sideload = ({ data }) => {
             }}
         >
             <div>
-                <div style={{ textAlign: "right" }}>
+                <div style={{ textAlign: "center" }}>
                     <Button
-                        style={{ color: "red" }}
+                        variant='outlined'
+                        style={{ color: "white", width: '90%', height: 20, marginBottom: 5 }}
                         onClick={() => {
-                            window.location.reload();
+                            window.location.reload()
                         }}
                     >
                         Close
@@ -98,25 +75,22 @@ const Sideload = ({ data }) => {
                 </div>
                 <div>
                     <center>
-                    <StyledImage src={data.image}></StyledImage>
+                        <StyledImage src={data.image}></StyledImage>
                     </center>
-                    <br />
-                    <br />
-                    <Typography variant="h4" color={"gold"}>
+                    <hr />
+                    <Typography textAlign={"center"} variant="h4" color={"gold"}>
                         {data.name}
                     </Typography>
                     <hr />
-                    <br />
+                    <Typography style={{ fontSize: 14 }} color={"white"}>Coordinates: {data.longitude}, {data.latitude}</Typography> <br />
                     <Typography color={"white"}>{data.description}</Typography>
                     <br />
-                    <hr />
-                    <Typography color={"white"}>{data.longitude}, {data.latitude}</Typography>
-                    <br /> <br />
+                    {data.departments.length > 0 && <Typography color={"white"}><u>Departments</u><br />{data.departments.join(', ')}</Typography>}
                 </div>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                    <Typography style={{ textAlign: "center", color: 'gray' }}>Floor Plan</Typography>
+                    <Typography style={{ textAlign: "center", color: 'white' }}>Floor Plan</Typography>
                     {Array.from({ length: data.floor_count }, (_, index) => (
                         <Button
                             key={index}
@@ -125,9 +99,14 @@ const Sideload = ({ data }) => {
                                 backgroundColor: 'coral',
                                 color: "white",
                             }}
-                            onClick={()=>{
-                                if(data.floor_plans[index]){
-                                    showModal(data.name,index+1, data.floor_plans[index], open, setOpen)
+                            onClick={() => {
+                                if (data.floor_plans[index]) {
+                                    setOpen(true)
+                                    setFloor({
+                                        name: data.name,
+                                        floor: index + 1,
+                                        floor_plan: data.floor_plans[index]
+                                    })
                                 }
                             }}
                         >
@@ -136,17 +115,60 @@ const Sideload = ({ data }) => {
                     ))}
                 </div>
                 <div>
-                    <Typography style={{ textAlign: "center", color: 'gray' }}>Click to</Typography>
-                    <Button style={{ backgroundColor: "green", color: "white" }} onClick={() => {
+                    <Typography style={{ textAlign: "center", color: 'white' }}>Click to</Typography>
+                    <Button style={{ backgroundColor: "green", color: "white" }} onClick={async () => {
+                        await getLocation(setSourceCoords)
+                        if(sourceCoords){
                         const url = `https://www.google.com/maps/dir/?api=1&origin=${sourceCoords.latitude},${sourceCoords.longitude}&destination=${data.latitude},${data.longitude}`
                         window.open(url, '_blank');
+                        }
+                        else{
+                            console.log("Current Location is not yet set")
+                        }
                     }}>
                         Navigate
                     </Button>
                 </div>
             </div>
+            {open && <ShowModal floor={floor} open={open} setOpen={setOpen} />}
         </div>
     );
 };
 
 export default Sideload;
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    // width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    zIndex: 2
+};
+
+const ShowModal = ({ floor, open, setOpen }) => {
+    const handleClose = () => { setOpen(false) }
+
+    console.log({ floor })
+    return (
+        <div>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby={"Floor Plan"}
+                aria-describedby={"Floor Plan for " + floor.name}
+            >
+                <Box sx={style}>
+                    <Typography id={floor.name} variant="h6" component="h2">
+                        Floor {floor.floor} Plan for {floor.name}
+                    </Typography>
+                    <FloorImage src={floor.floor_plan}></FloorImage>
+                </Box>
+            </Modal>
+        </div>
+    );
+}

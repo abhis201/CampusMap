@@ -4,12 +4,16 @@ import "leaflet/dist/leaflet.css";
 import Sideload from "./Sideload";
 import { FilterButtons } from "./FilterButtons";
 import L from "leaflet";
+import { Button } from "@mui/material";
+import { getLocation } from "./Sideload";
 
 const CampusMap = ({ marker }) => {
   const [sideload, setSideload] = useState(null);
   const [buildings, setBuildings] = useState([]);
   const [depts, setDepts] = useState([]);
   const [parkings, setParking] = useState([]);
+
+  const [currLoc, setCurrLoc] = useState(null);
 
   const markerClick = (markerData) => {
     console.log(markerData)
@@ -83,25 +87,25 @@ const CampusMap = ({ marker }) => {
   let zoom = 16;
 
   const redIcon = new L.Icon({
-    iconUrl: '../../public/icons/pin.png',
+    iconUrl: '../../assets/pin.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
   const greenIcon = new L.Icon({
-    iconUrl: '../../public/icons/green.png',
+    iconUrl: '../../assets/green.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
   const blueIcon = new L.Icon({
-    iconUrl: '../../public/icons/location.png',
+    iconUrl: '../../assets/location.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
   const yellowIcon = new L.Icon({
-    iconUrl: '../../public/icons/yellow.png',
+    iconUrl: '../../assets/yellow.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
@@ -163,7 +167,13 @@ const CampusMap = ({ marker }) => {
               },
             }}
           >
-            <Popup>Remaining Capacity: {prk.capacity}</Popup>
+            <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}
+            <Button style={{height: 12, fontSize: 12}} onClick={async ()=>{
+              await getLocation(setCurrLoc)
+              const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
+              window.open(url, '_blank');
+            }}>Navigate</Button>
+            </Popup>
           </Marker>
         ))}
 

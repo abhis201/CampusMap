@@ -13,9 +13,9 @@
     "name": "Nils Biotech",
     "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
     "floor_count": 3,
-    "image": "https://images.adsttc.com/media/images/605b/87f2/f91c/8171/5b00/00eb/slideshow/005433_00_n83_letter.jpg?1616611301",
+    "image": "https://pnwpioneer.com/wp-content/uploads/2020/09/Nils1_Golab-900x600.jpg",
     "description": "Located on the Hammond campus, the building plays host to our nursing and biological sciences departments. Boasting an eye-catching design and close to 70,000 square feet of space, the building was created with two main goals in mind – to offer a wide array of spaces for students to work and collaborate in and also maintain flexibility for future growth and changing learning methods.",
-    "departments": ["nursing", "Biology"],
+    "departments": ["Nursing", "Biology"],
     "abbr": "NILS"
   },
   {
@@ -58,7 +58,7 @@
     "name": "Gyte Building",
     "location": { "lat": 41.585208582400924, "lng": -87.47530541214874 },
     "floor_count": 2,
-    "image": "https://www.pnw.edu/crime-forensics/wp-content/uploads/sites/32/2021/11/Gyte_Building_Exterior_KCf_Hammond_2020.17-3-900x600.jpg",
+    "image": "https://www.pnw.edu/wp-content/uploads/2021/11/Gyte_Building_Exterior_KCF_Hammond_2020.17-3.jpg",
     "description": "The Millard E. Gyte Building (GYTE) is located in the northwest corner of the Hammond campus,east of Woodmar ave. and southwest of 169th Street parking, just south of the Gyte annex Building, northwest of the founders Plaza, and west of Porter Hall. GYTE is located on the Peregrine Path. ",
     "departments": ["Biology", "Organic Chemistry", "arts and Crafts"],
     "abbr": "GYTE"
@@ -67,7 +67,7 @@
     "name": "Classroom Office",
     "location": { "lat": 41.586695532881826, "lng": -87.47533671932626 },
     "floor_count": 3,
-    "image": "http://www.mksdarchitects.com/wp-content/uploads/2012/01/nCC-classroom.jpg",
+    "image": "https://www.pnw.edu/facilities/wp-content/uploads/sites/70/2023/08/PNW-Classroom-Office-Building-016_750x500.jpg",
     "description": "The Classroom Office Building (CLO) is located in the northwest corner of the Hammond campus, east of Woodmar ave. and west of 169th Street Parking, just south of the anderson Building and just north of the Powers Building and the Potter Building. CLO is located on the Peregrine Path.",
     "departments": [
       "Maths",
@@ -81,7 +81,7 @@
     "name": "Anderson Building",
     "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
     "floor_count": 3,
-    "floor_plans":["../assets/FloorPlans/Anderson Floor Plan.png"],
+    "floor_plans":["../../assets/FloorPlans/Anderson Floor Plan.png"],
     "image": "https://media.graphassets.com/resize=fit:crop,height:650,width:908/output=format:webp/if1L8jSxRmKYooXYPFVV",
     "description": "The Edward D. Anderson Building (ANDR) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and just south of 169th St. ANDR is at the northern end of the Peregrine Path, just north of the Classroom Office Building, and northwest of 169th Street Parking. There is a circle drive that extends off of Woodmar Ave. to the southwest entrance",
     "departments": [
@@ -93,12 +93,12 @@
   },
   {
     "name": "Potters Building",
-    "location": { "lat": 41.58600474912222, "lng": -87.47554021598008 },
+    "location": { "lat": 41.586261836196485, "lng": -87.47481183443534 },
     "floor_count": 2,
-    "image": "hhttps://maps.app.goo.gl/ujtLifHKsHWeBffc8",
-    "description": "University village dorms",
-    "departments": ["phsycology", "ECE"],
-    "abbr": "Potters"
+    "image": "../assets/potter building.png",
+    "description": "The Andrey A. Potter Building (POTT) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and west of 169th Street Parking, southeast of the Classroom Office Building, just north of the Gyte Annex Building and just east the Powers Building. POTT is located on the Peregrine Path.",
+    "departments": ["Psychology", "ECE"],
+    "abbr": "POTT"
   },
   {
     "name": "Parking Garage",

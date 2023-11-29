@@ -42,6 +42,8 @@ export const FilterButtons = ({ showBlds, showDeps, showParks }) => {
             floor_count: item.floor_count,
             latitude: item.location.lat,
             longitude: item.location.lng,
+            floor_plans: item.floor_plans,
+            departments: item.departments
           },
         });
       });
@@ -59,6 +61,7 @@ export const FilterButtons = ({ showBlds, showDeps, showParks }) => {
           id: item.name,
           position: item.location,
           capacity: item.capacity,
+          abbr: item.abbr
         });
       });
     }
