@@ -10,15 +10,16 @@ import { BASE_URL } from "./config.js";
 import { useEffect, useState } from "react";
 import { FilterButtons } from "./components/FilterButtons.jsx";
 import Sideload from "./components/Sideload.jsx";
-import buildings from "../../common/buiding.json"
+import buildings from "../../common/buiding.json";
+import parkings from "../../common/parking.json";
 
 function App() {
   const [marker, setMarker] = useState(null);
 
   const handleSearchItemClick = (item) => {
-    console.log("Search Item Clicked!")
-    console.log(item)
-    
+    console.log("Search Item Clicked!");
+    console.log(item);
+
     setMarker({
       id: item.name,
       position: item.location,
@@ -30,26 +31,47 @@ function App() {
         latitude: item.location.lat,
         longitude: item.location.lng,
         floor_plans: item.floor_plans,
-        departments:item.departments
+        departments: item.departments,
       },
     });
   };
 
+  const [vtour, setVtour] = useState(false);
+  const [parkData, setParkData] = useState([]);
+
+  // console.log(parkings);
+  console.log(parkData);
+
+
+  const handleMenuOperation = (item) => {
+    if (item === "Visitor Tour") {
+      setVtour(true);
+    } else if (item === "Park") {
+      if (parkData.length > 0) {
+        setParkData([]);
+      } else {
+        setParkData(parkings);
+      }
+    }
+  };
+
   const loadData = {
-    "name": "Anderson Building",
-    "latitude": 41.58767900887252,
-     "longitude": -87.47547760162504,
-    "floor_count": 3,
-    "floor_plans":["../assets/FloorPlans/Anderson Floor Plan.png", ""],
-    "image": "https://media.graphassets.com/resize=fit:crop,height:650,width:908/output=format:webp/if1L8jSxRmKYooXYPFVV",
-    "description": "The Edward D. Anderson Building (ANDR) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and just south of 169th St. ANDR is at the northern end of the Peregrine Path, just north of the Classroom Office Building, and northwest of 169th Street Parking. There is a circle drive that extends off of Woodmar Ave. to the southwest entrance",
-    "departments": [
+    name: "Anderson Building",
+    latitude: 41.58767900887252,
+    longitude: -87.47547760162504,
+    floor_count: 3,
+    floor_plans: ["../assets/FloorPlans/Anderson Floor Plan.png", ""],
+    image:
+      "https://media.graphassets.com/resize=fit:crop,height:650,width:908/output=format:webp/if1L8jSxRmKYooXYPFVV",
+    description:
+      "The Edward D. Anderson Building (ANDR) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and just south of 169th St. ANDR is at the northern end of the Peregrine Path, just north of the Classroom Office Building, and northwest of 169th Street Parking. There is a circle drive that extends off of Woodmar Ave. to the southwest entrance",
+    departments: [
       "Computer and Information Technology",
       "Industrial Technology",
-      "Graphical Technology"
+      "Graphical Technology",
     ],
-    "abbr": "Ande"
-  }
+    abbr: "Ande",
+  };
 
   return (
     <RecoilRoot>
@@ -57,16 +79,24 @@ function App() {
         style={{
           width: "100vw",
           height: "100vh",
-          backgroundColor: "#eeeeee"
+          backgroundColor: "#eeeeee",
         }}
       >
         <Router>
-          <Navbar onSearchItemClick={handleSearchItemClick} />
+          <Navbar
+            onSearchItemClick={handleSearchItemClick}
+            menuOperation={handleMenuOperation}
+          />
           <InitUser />
           <Routes>
             <Route path={"/signin"} element={<Signin />} />
             <Route path={"/signup"} element={<Signup />} />
-            <Route path={"/"} element={<CampusMap marker={marker} />} />
+            <Route
+              path={"/"}
+              element={
+                <CampusMap marker={marker} park={parkData} vtour={vtour} />
+              }
+            />
             <Route path={"/filters"} element={<FilterButtons />} />
             <Route path={"/sideload"} element={<Sideload data={loadData} />} />
           </Routes>

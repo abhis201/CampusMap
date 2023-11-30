@@ -60,7 +60,7 @@ export const FilterButtons = ({ showBlds, showDeps, showParks }) => {
         prkData.push ({
           id: item.name,
           position: item.location,
-          capacity: item.capacity,
+          capacity: item.capacity+"%",
           abbr: item.abbr
         });
       });
@@ -88,7 +88,7 @@ export const FilterButtons = ({ showBlds, showDeps, showParks }) => {
         position: "absolute",
         zIndex: 2,
         right: 30,
-        top: 100,
+        bottom: 50,
         backgroundColor: "white",
         padding: 10,
       }}

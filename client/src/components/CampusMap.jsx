@@ -1,19 +1,23 @@
 import React, { useRef, useState, useEffect } from "react";
-import { MapContainer, Polygon, FeatureGroup, TileLayer, LayersControl, useMapEvent, Marker, Popup } from 'react-leaflet';
+import { MapContainer, Polygon, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import Sideload from "./Sideload";
 import { FilterButtons } from "./FilterButtons";
 import L from "leaflet";
-import { Button } from "@mui/material";
+import { Button, Modal, Box, Typography } from "@mui/material";
 import { getLocation } from "./Sideload";
+import YouTube from 'react-youtube';
 
-const CampusMap = ({ marker }) => {
+const CampusMap = ({ marker, park, vtour }) => {
   const [sideload, setSideload] = useState(null);
   const [buildings, setBuildings] = useState([]);
   const [depts, setDepts] = useState([]);
   const [parkings, setParking] = useState([]);
 
   const [currLoc, setCurrLoc] = useState(null);
+
+  const videoId = 'https://youtu.be/EhYk54W9kYM?si=t1-YUceRFzBo83du';
+  const [openVideo, setOpenVideo] = useState(false)
 
   const markerClick = (markerData) => {
     console.log(markerData)
@@ -148,7 +152,7 @@ const CampusMap = ({ marker }) => {
             icon={greenIcon}
             eventHandlers={{
               click: () => {
-                console.log("Department Marker clicked for: "+bld.id)
+                console.log("Department Marker clicked for: " + bld.id)
               },
             }}
           >
@@ -163,19 +167,40 @@ const CampusMap = ({ marker }) => {
             icon={yellowIcon}
             eventHandlers={{
               click: () => {
-                console.log("Parking Marker Clicked for: "+prk.id)
+                console.log("Parking Marker Clicked for: " + prk.id)
               },
             }}
           >
             <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}
-            <Button style={{height: 12, fontSize: 12}} onClick={async ()=>{
-              await getLocation(setCurrLoc)
-              const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
-              window.open(url, '_blank');
-            }}>Navigate</Button>
+              <Button style={{ height: 12, fontSize: 12 }} onClick={async () => {
+                await getLocation(setCurrLoc)
+                const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
+                window.open(url, '_blank');
+              }}>Navigate</Button>
             </Popup>
           </Marker>
         ))}
+
+        {console.log(park) && park.map((prk) => {
+          <Marker
+            key={prk.name}
+            position={prk.location}
+            icon={yellowIcon}
+            eventHandlers={{
+              click: () => {
+                console.log("Parking Marker Clicked for: " + prk.name)
+              },
+            }}
+          >
+            <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}
+              <Button style={{ height: 12, fontSize: 12 }} onClick={async () => {
+                await getLocation(setCurrLoc)
+                const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.location.lat},${prk.location.lng}`
+                window.open(url, '_blank');
+              }}>Navigate</Button>
+            </Popup>
+          </Marker>
+        })}
 
 
         {marker && (
@@ -199,8 +224,52 @@ const CampusMap = ({ marker }) => {
 
       {sideload && <Sideload data={sideload} />}
       <FilterButtons showBlds={showBuildingMarkers} showDeps={showDeptMarkers} showParks={showParkMarkers} />
+      {console.log(vtour) && vtour && <VideoModal video={videoId} open={openVideo} setOpen={setOpenVideo}/>}
     </div>
   );
 };
 
 export default CampusMap;
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  // width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  zIndex: 2
+};
+
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+const VideoModal = ({ video, open, setOpen }) => {
+  const handleClose = () => { setOpen(false) }
+
+  return (
+      <div>
+          <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby={"Visitor Guide"}
+              aria-describedby={"PNW Visitor Guide"}
+          >
+              <Box sx={style}>
+                  <Typography id='vguide' variant="h6" component="h2">
+                      PNW Visitors Guide
+                  </Typography>
+                  <YouTube videoId={video} opts={opts} />
+              </Box>
+          </Modal>
+      </div>
+  );
+}

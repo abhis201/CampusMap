@@ -41,7 +41,7 @@ export default function ModalView({ itr, modal, setModal }) {
             }}
           >
             {itr.map((obj) => (
-              <Tooltip title={(heading=="Parking")?obj.capacity:obj.name}>
+              <Tooltip title={(heading=="Parking")?obj.capacity+"% Remaining":obj.name}>
                 <Button
                   key={obj.name}
                   onClick={() => console.log(`Button ${obj.name} clicked`)}
