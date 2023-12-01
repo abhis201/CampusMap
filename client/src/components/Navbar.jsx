@@ -11,23 +11,25 @@ import Tooltip from '@mui/material/Tooltip';
 import logo from '../assets/pnw-logo.png';
 import buildings from '../../../common/buiding.json';
 import WeatherIcon from '../assets/snow.png'
-import YouTube from 'react-youtube';
 
 const Navbar = ({ onSearchItemClick, menuOperation }) => {
   const [searchItem, setSearchItem] = useState('');
-  const [videoId, setVideoId] = useState('https://youtu.be/EhYk54W9kYM?si=t1-YUceRFzBo83du');
-  const [openVideo, setOpenVideo] = useState(false)
-
-
-  const handleMenuItemSelect = (item) => {
-    menuOperation(item)
-  };
 
   const handleSearchItemClick = (item) => {
     onSearchItemClick(item); // Call the callback function to add a marker
   };
 
-  const menuItems = ['Park', 'Emergency', 'Live Events', 'Locate Class', 'Visitor Tour'];
+  const handleMenuClick = async (item) => {
+    menuOperation(item)
+  }
+
+  const menuItems = [
+    { "name": 'Park', "desc": "Shows 5 parking spots with high capacity" },
+    { "name": 'Emergency', "desc": "Emergency Services" },
+    { "name": 'Live Events', "desc": "Shows information about Live Events in the campus" },
+    { "name": 'Locate Class', "desc": "Displays location of your classes" },
+    { "name": 'Visitor Tour', "desc": "See a tour guide for new visitors" }
+  ];
 
   return (
     <AppBar position="static">
@@ -47,10 +49,18 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
 
 
           {menuItems.map((item) => (
-            <Button variant='outlined' key={item} style={{ display: "flex", flexDirection: 'column', marginRight:10}} color='inherit' onClick={() => handleMenuItemSelect(item)}>
-              {item}
-            </Button>
+            <Tooltip title={item.desc} key={item.name}>
+              <Button
+                variant='outlined'
+                style={{ display: "flex", flexDirection: 'column', marginRight: 10 }}
+                color='inherit'
+                onClick={async () => await handleMenuClick(item.name)}
+              >
+                {item.name}
+              </Button>
+            </Tooltip>
           ))}
+
 
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center', marginLeft: '10px' }}>
             <IconButton color="inherit">
@@ -103,47 +113,3 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
 };
 
 export default Navbar;
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  // width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  zIndex: 2
-};
-
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
-const VideoModal = ({ video, open, setOpen }) => {
-  const handleClose = () => { setOpen(false) }
-
-  return (
-      <div>
-          <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby={"Visitor Guide"}
-              aria-describedby={"PNW Visitor Guide"}
-          >
-              <Box sx={style}>
-                  <Typography id='vguide' variant="h6" component="h2">
-                      PNW Visitors Guide
-                  </Typography>
-                  <YouTube videoId={video} opts={opts} />
-              </Box>
-          </Modal>
-      </div>
-  );
-}

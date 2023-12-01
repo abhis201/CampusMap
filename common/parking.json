@@ -3,54 +3,54 @@
     "name": "Parking 1",
     "location": { "lat": 41.58001733303985, "lng": -87.4730042311299 },
     "abbr": "P1",
-    "capacity": 20
+    "capacity": "20"
   },
   {
     "name": "Parking 2",
     "location": { "lat": 41.58282066099388, "lng": -87.4743697888921 },
     "abbr": "P2",
-    "capacity": 80
+    "capacity": "80"
   },
   {
     "name": "Parking 3",
     "location": { "lat": 41.58591288894404, "lng": -87.47578430398346 },
     "abbr": "P3",
-    "capacity": 60
+    "capacity": "60"
   },
   {
     "name": "Parking 4",
     "location": { "lat": 41.58637267782067, "lng": -87.47416828804916 },
     "abbr": "P4",
-    "capacity": 15
+    "capacity": "15"
   },
   {
     "name": "Parking 5",
     "location": { "lat": 41.586230652211015, "lng": -87.47293939197888 },
     "abbr": "P5",
-    "capacity": 34
+    "capacity": "34"
   },
   {
     "name": "Parking 6",
     "location": { "lat": 41.58617390888519, "lng": -87.4717028035609 },
     "abbr": "P6",
-    "capacity": 56
+    "capacity": "56"
   },
   {
     "name": "Parking 7",
     "location": { "lat": 41.586888871146286, "lng": -87.47193039652126 },
     "abbr": "P7",
-    "capacity": 37
+    "capacity": "37"
   },
   {
     "name": "Parking 8",
     "location": { "lat": 41.587622742175384, "lng": -87.4744485302655 },
     "abbr": "P8",
-    "capacity": 55
+    "capacity": "55"
   },
   {
     "name": "Parking 9",
     "location": { "lat": 41.5876949630089, "lng": -87.47173413499995 },
     "abbr": "P9",
-    "capacity": 30
+    "capacity": "30"
   }
 ]

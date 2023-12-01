@@ -10,8 +10,9 @@ import { BASE_URL } from "./config.js";
 import { useEffect, useState } from "react";
 import { FilterButtons } from "./components/FilterButtons.jsx";
 import Sideload from "./components/Sideload.jsx";
-import buildings from "../../common/buiding.json";
-import parkings from "../../common/parking.json";
+import building_data from "../../common/buiding.json";
+import parking_data from "../../common/parking.json";
+import VideoModal from './components/VideoModal.jsx'
 
 function App() {
   const [marker, setMarker] = useState(null);
@@ -36,21 +37,29 @@ function App() {
     });
   };
 
+  const videoId = 'https://youtu.be/EhYk54W9kYM?si=t1-YUceRFzBo83du';
   const [vtour, setVtour] = useState(false);
+
+  const video = {
+    link: videoId,
+    open: vtour,
+    setOpen: setVtour
+  }
+
   const [parkData, setParkData] = useState([]);
 
-  // console.log(parkings);
-  console.log(parkData);
-
-
-  const handleMenuOperation = (item) => {
+  const handleMenuOperation = async (item) => {
     if (item === "Visitor Tour") {
       setVtour(true);
+      console.log("vtor set to " + vtour)
     } else if (item === "Park") {
       if (parkData.length > 0) {
         setParkData([]);
       } else {
-        setParkData(parkings);
+        const filteredParkData = parking_data
+          .sort((a, b) => parseInt(b.capacity) - parseInt(a.capacity))
+          .slice(0, 5);
+        setParkData(filteredParkData);
       }
     }
   };
@@ -94,11 +103,12 @@ function App() {
             <Route
               path={"/"}
               element={
-                <CampusMap marker={marker} park={parkData} vtour={vtour} />
+                <CampusMap marker={marker} park={parkData} vtour={video} />
               }
             />
             <Route path={"/filters"} element={<FilterButtons />} />
             <Route path={"/sideload"} element={<Sideload data={loadData} />} />
+            <Route path={"/ytube"} element={<VideoModal video='https://www.youtube.com/embed/EhYk54W9kYM' open={vtour} setOpen={setVtour} />} />
           </Routes>
         </Router>
       </div>
