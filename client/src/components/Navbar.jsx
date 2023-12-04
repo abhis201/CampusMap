@@ -8,9 +8,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Button, Grid } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
-import logo from '../assets/pnw-logo.png';
+import logo from '../../public/pnw-logo.png';
 import buildings from '../../../common/buiding.json';
-import WeatherIcon from '../assets/snow.png'
+import WeatherIcon from '../../public/snow.png'
 
 const Navbar = ({ onSearchItemClick, menuOperation }) => {
   const [searchItem, setSearchItem] = useState('');
