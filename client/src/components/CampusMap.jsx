@@ -89,25 +89,25 @@ const CampusMap = ({ marker, park, vtour }) => {
   let zoom = 16;
 
   const redIcon = new L.Icon({
-    iconUrl: '../public/images/pin.png',
+    iconUrl: '/images/pin.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
   const greenIcon = new L.Icon({
-    iconUrl: '../public/images/green.png',
+    iconUrl: '/images/green.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
   const blueIcon = new L.Icon({
-    iconUrl: '../public/images/location.png',
+    iconUrl: '/images/location.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
   const yellowIcon = new L.Icon({
-    iconUrl: '../public/images/yellow.png',
+    iconUrl: '/images/yellow.png',
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
