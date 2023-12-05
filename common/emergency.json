@@ -1,0 +1,74 @@
+{
+    "name": "Emergency Sign 1",
+    "location": { "lat":41.587151 , "lng": -87.473541 },
+    "abbr": "E1- Opposite Anderson",
+  },
+  {
+    "name": "Emergency Sign 2",
+    "location": { "lat":41.585544 , "lng": -87.473439 },
+    "abbr": "E2- Potter",
+  },
+  {
+    "name": "Emergency Sign 3",
+    "location": { "lat":41.586112 , "lng": -87.471763 },
+    "abbr": "E3- Parking Lot",
+  }, 
+  {
+    "name": "Emergency Sign 4",
+    "location": { "lat":41.587137 , "lng": -87.471866 },
+    "abbr": "E4 - parking lot",
+  },
+   {
+    "name": "Emergency Sign 5",
+    "location": { "lat":41.585591 , "lng": -87.474367 },
+    "abbr": "E5-Gyte 1",
+  },
+  {
+    "name": "Emergency Sign 6",
+    "location": { "lat":41.585603 , "lng": -87.475511 },
+    "abbr": "E6-Gyte 2",
+  },
+  {
+    "name": "Emergency Sign 7",
+    "location": { "lat":41.584708 , "lng": -87.475718},
+    "abbr": "E7-Gyte 3",
+  },
+  {
+    "name": "Emergency Sign 8",
+    "location": { "lat":41.584909 , "lng": -87.474280},
+    "abbr": "E8- Behind Gyte",
+  },
+  {
+    "name": "Emergency Sign 9",
+    "location": { "lat":41.584866 , "lng": -87.473502},
+    "abbr": "E9-behind potter",
+  },
+  {
+    "name": "Emergency Sign 10",
+    "location": { "lat":41.584119 , "lng": -87.474151},
+    "abbr": "E10-behind SULB",
+  },
+  {
+    "name": "Emergency Sign 11",
+    "location": { "lat":41.582560 , "lng": -87.475667},
+    "abbr": "E11-Lawshe",
+  },
+  {
+    "name": "Emergency Sign 12",
+    "location": { "lat":41.581992 , "lng": -87.475322},
+    "abbr": "E12- Parking Slot",
+  },
+  {
+    "name": "Emergency Sign 13",
+    "location": { "lat":41.582073 , "lng": -87.474200},
+    "abbr": "E13-Parking Slot",
+  },
+  {
+    "name": "Emergency Sign 14",
+    "location": { "lat":41.580632 , "lng": -87.473362},
+    "abbr": "E14-Dorms",
+  }
+
+
+
+  
