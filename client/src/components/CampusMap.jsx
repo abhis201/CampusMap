@@ -172,8 +172,13 @@ const CampusMap = ({ marker, park, vtour }) => {
             <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}
               <Button style={{ height: 12, fontSize: 12 }} onClick={async () => {
                 await getLocation(setCurrLoc)
-                const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
-                window.open(url, '_blank');
+                if (currLoc) {
+                  const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
+                  window.open(url, '_blank');
+                }
+                else {
+                  alert("Finding Current Location Please Wait!")
+                }
               }}>Navigate</Button>
             </Popup>
           </Marker>
@@ -198,8 +203,13 @@ const CampusMap = ({ marker, park, vtour }) => {
                   style={{ height: 12, fontSize: 12 }}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
-                    const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.location.lat},${prk.location.lng}`;
-                    window.open(url, '_blank');
+                    if (currLoc) {
+                      const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.location.lat},${prk.location.lng}`;
+                      window.open(url, '_blank');
+                    }
+                    else {
+                      alert("Finding Current Location Please Wait!")
+                    }
                   }}
                 >
                   Navigate
