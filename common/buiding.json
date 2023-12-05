@@ -81,7 +81,7 @@
     "name": "Anderson Building",
     "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
     "floor_count": 3,
-    "floor_plans":["/images/FloorPlans/Anderson Floor Plan.png",""],
+    "floor_plans":["/images/FloorPlans/Anderson Floor Plan.png","/images/FloorPlans/AND_2nd.png","/images/FloorPlans/AND_3rd.png"],
     "image": "https://media.graphassets.com/resize=fit:crop,height:650,width:908/output=format:webp/if1L8jSxRmKYooXYPFVV",
     "description": "The Edward D. Anderson Building (ANDR) is located in the northwest corner of the Hammond campus, east of Woodmar Ave. and just south of 169th St. ANDR is at the northern end of the Peregrine Path, just north of the Classroom Office Building, and northwest of 169th Street Parking. There is a circle drive that extends off of Woodmar Ave. to the southwest entrance",
     "departments": [
