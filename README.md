@@ -8,10 +8,11 @@ For running the project
 1. cd server/
 2. npm install
 3. node index.js
-## Then run the Client code to view the frontend
+## Then run the Client code to view the frontend (Starting a dev server)
 1. cd ../client
 2. npm install
-3. npm run dev
+3. npm run dev  
+   
 
 If you see an Eacess error then run the command using sudo i.e.  add sudo before each command
 
