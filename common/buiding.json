@@ -51,7 +51,7 @@
   {
     "name": "Porter Hall",
     "location": { "lat": 41.58525541600925, "lng": -87.47333305996557 },
-    "floor_count": 4,
+    "floor_count": 1,
     "floor_plans":["/images/FloorPlans/PORT_2nd.png"],
     "image": "https://pbs.twimg.com/profile_images/958054877770416129/0Amt40-W_400x400.jpg",
     "description": "Gene Stratton Porter Hall (PORT) is located on the north side of the Hammond campus, west of the 169th St. Parking Garage, south of the 169th Street Parking lot, northeast of the Student Union & Library Building, east of the Gyte Building, and north of 171st Street",
@@ -119,7 +119,7 @@
   {
     "name": "Fitness and Recreation Center",
     "location": { "lat": 41.58057467112049, "lng": -87.47433846210527 },
-    "floor_count": 4,
+    "floor_count": 1,
     "floor_plans":["/images/FloorPlans/FRC Floor Plan.png"],
     "image": "https://www.pnw.edu/fitness-recreational-sports/wp-content/uploads/sites/6/2022/06/Join-the-Fun_Pingpong-900x600.jpg",
     "description": "The fitness & Recreation Center (fRnC) is located just south of 173rd Street on the Hammond Campus. The building is situated on the eastern side of the South 173rd Street Parking Lot, immediately to the west of Peregrine Hall. ",
@@ -147,7 +147,7 @@
   {
     "name": "Powers Building",
     "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
-    "floor_count": 4,
+    "floor_count": 2,
     "floor_plans":["/images/FloorPlans/Powers Floor Plan.png","/images/FloorPlans/POW_2nd.png"],
     "image": "https://pnwathletics.com/custompages/gallery/Powers_PNW_Outing_2022/20220620_DB_Powers_Golf_Outing1.JPG?width=1024&height=682",
     "description": "The andrey a. Potter Building (POTT) is located in the northwest corner of the Hammondcampus, east of Woodmar ave. and west of 169th Street Parking, southeast of the Classroom Office Building, just north of the Gyte annex Building and just east the Powers Building. POTT is located on the Peregrine Path.",
