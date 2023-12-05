@@ -11,7 +11,7 @@ For running the project
 ## Then run the Client code to view the frontend
 1. cd ../client
 2. npm install
-3. npm run dev
+3. npm run dev(development)
 
 If you see an Eacess error then run the command using sudo i.e.  add sudo before each command
 
