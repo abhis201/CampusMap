@@ -9,82 +9,82 @@
   {
     "name": "Finance",
     "building": "Lawshe Hall",
-    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 },
-    "abbr":"Fin"
+    "location": { "lat": 41.582886286733387, "lng": -87.47531081137126 },
+    "abbr": "Fin"
   },
 
   {
     "name": "Admission",
     "building": "Lawshe Hall",
-    "location": { "lat": 41.582886286733384, "lng": -87.47531081137124 },
-    "abbr":"Admn"
+    "location": { "lat": 41.582757976582236, "lng": -87.47528303437426 },
+    "abbr": "Admn"
   },
 
   {
     "name": "Maths",
     "building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
-    "abbr":"Math"
+    "location": { "lat": 41.58543391715573, "lng": -87.47557560793257 },
+    "abbr": "Math"
   },
   {
     "name": "Nursing",
     "building": "Nils Biotech",
     "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
-    "abbr":"Nur"
+    "abbr": "Nur"
   },
 
   {
     "name": "Chemistry",
     "building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
-    "abbr":"Chem"
+    "location": { "lat": 41.58518738069004, "lng": -87.47428680289802 },
+    "abbr": "Chem"
   },
   {
     "name": "Student Life",
     "building": "Student Union Library",
     "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 },
-    "abbr":"Life"
+    "abbr": "Life"
   },
 
   {
     "name": "Arts and Crafts",
     "building": "Gyte",
-    "location": { "lat": 41.58348816869513, "lng": -87.47404480873345 },
-    "abbr":"A&C"
+    "location": { "lat": 41.58578294469967, "lng": -87.4748089911448 },
+    "abbr": "A&C"
   },
 
   {
-    "name": "Computer And Information Technologys",
+    "name": "Computer And Information Technology",
     "building": "Anderson building",
     "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
-    "abbr":"CIT"
+    "abbr": "CIT"
   },
 
   {
     "name": "Industrial Technology",
     "building": "Anderson building",
-    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
-    "abbr":"Ind"
+    "location": { "lat": 41.58774411204048, "lng": -87.4750830473952 },
+    "abbr": "Ind"
   },
 
   {
     "name": "Graphical Technology",
     "building": "Anderson building",
-    "location": { "lat": 41.58767900887252, "lng": -87.47547760162504 },
-    "abbr":"Grap"
+    "location": { "lat": 41.58742279492452, "lng": -87.47559042179098 },
+    "abbr": "Grap"
   },
 
   {
     "name": "CIVIS",
     "building": "Powers building",
-    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
-    "abbr":"CIVS"
+    "location": { "lat": 41.58601839874018, "lng": -87.47554968370049 },
+    "abbr": "CIVS"
   },
 
   {
     "name": "Customer Service",
     "building": "Powers building",
-    "location": { "lat": 41.58600822485555, "lng": -87.4754870100478 },
-    "abbr":"Cust"
+    "location": { "lat": 41.586458833961046, "lng": -87.47525711014381 },
+    "abbr": "Cust"
   }
 ]

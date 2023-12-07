@@ -1,74 +1,72 @@
-[{
+[
+  {
     "name": "Emergency Sign-1 Anderson",
-    "location": { "lat":41.587151 , "lng": -87.473541 },
+    "location": { "lat": 41.587151, "lng": -87.473541 },
     "abbr": "E1"
   },
   {
     "name": "Emergency Sign 2- Potter",
-    "location": { "lat":41.585544 , "lng": -87.473439 },
+    "location": { "lat": 41.585544, "lng": -87.473439 },
     "abbr": "E2"
   },
   {
     "name": "Emergency Sign 3",
-    "location": { "lat":41.586112 , "lng": -87.471763 },
+    "location": { "lat": 41.586112, "lng": -87.471763 },
     "abbr": "E3"
-  }, 
+  },
   {
     "name": "Emergency Sign 4",
-    "location": { "lat":41.587137 , "lng": -87.471866 },
+    "location": { "lat": 41.587137, "lng": -87.471866 },
     "abbr": "E4"
   },
-   {
+  {
     "name": "Emergency Sign 5-Gyte",
-    "location": { "lat":41.585591 , "lng": -87.474367 },
+    "location": { "lat": 41.585591, "lng": -87.474367 },
     "abbr": "E5"
   },
   {
     "name": "Emergency Sign 6-Gyte",
-    "location": { "lat":41.585603 , "lng": -87.475511 },
+    "location": { "lat": 41.585603, "lng": -87.475511 },
     "abbr": "E6"
   },
   {
     "name": "Emergency Sign 7-Gyte",
-    "location": { "lat":41.584708 , "lng": -87.475718},
+    "location": { "lat": 41.584708, "lng": -87.475718 },
     "abbr": "E7"
   },
   {
     "name": "Emergency Sign 8-Gyte",
-    "location": { "lat":41.584909 , "lng": -87.474280},
+    "location": { "lat": 41.584909, "lng": -87.47428 },
     "abbr": "E8"
   },
   {
     "name": "Emergency Sign 9-Potter",
-    "location": { "lat":41.584866 , "lng": -87.473502},
+    "location": { "lat": 41.584866, "lng": -87.473502 },
     "abbr": "E9"
   },
   {
     "name": "Emergency Sign 10-SULB",
-    "location": { "lat":41.584119 , "lng": -87.474151},
+    "location": { "lat": 41.584119, "lng": -87.474151 },
     "abbr": "E10"
   },
   {
     "name": "Emergency Sign 11-Lawshe",
-    "location": { "lat":41.582560 , "lng": -87.475667},
+    "location": { "lat": 41.58256, "lng": -87.475667 },
     "abbr": "E11"
   },
   {
     "name": "Emergency Sign 12",
-    "location": { "lat":41.581992 , "lng": -87.475322},
+    "location": { "lat": 41.581992, "lng": -87.475322 },
     "abbr": "E12"
   },
   {
     "name": "Emergency Sign 13",
-    "location": { "lat":41.582073 , "lng": -87.474200},
+    "location": { "lat": 41.582073, "lng": -87.4742 },
     "abbr": "E13"
   },
   {
     "name": "Emergency Sign 14-Dorms",
-    "location": { "lat":41.580632 , "lng": -87.473362},
+    "location": { "lat": 41.580632, "lng": -87.473362 },
     "abbr": "E14"
   }
 ]
-
-
-  

@@ -20,6 +20,8 @@ export const getLocation = async (setter) => {
                 // Extract latitude and longitude from the position object
                 const { latitude, longitude } = position.coords;
                 setter({ latitude, longitude });
+
+                return { latitude, longitude };
             },
             (error) => {
                 console.error('Error getting location:', error.message);

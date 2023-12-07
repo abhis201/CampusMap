@@ -14,6 +14,7 @@ import building_data from "../../common/buiding.json";
 import parking_data from "../../common/parking.json";
 import VideoModal from './components/VideoModal.jsx'
 import emergency_data from "../../common/emergency.json"
+
 function App() {
   const [marker, setMarker] = useState(null);
 
@@ -47,7 +48,9 @@ function App() {
   }
 
   const [parkData, setParkData] = useState([]);
-  const[emergencyData, setEmergencyData] = useState([])
+  const [emergencyData, setEmergencyData] = useState([])
+  const [liveEvents, setLiveEvents] = useState([])
+
   const handleMenuOperation = async (item) => {
     if (item === "Visitor Tour") {
       setVtour(true);
@@ -62,20 +65,34 @@ function App() {
         setParkData(filteredParkData);
       }
     }
-    else if(item==="Emergency")
-    {
-      if(emergencyData.length>0)
-      {
+    else if (item === "Emergency") {
+      if (emergencyData.length > 0) {
         setEmergencyData([]);
       }
-      else{
+      else {
         const filteredEmergencyData = emergency_data
         setEmergencyData(filteredEmergencyData);
-        
       }
     }
-    
+    else if (item === "Live Events") {
+      if (liveEvents.length > 0) {
+        setLiveEvents([]);
+      }
+      else {
+        const live_events = building_data
+          .filter((item) => item.live_events.length > 0)
+          .map((item) => {
+            return {
+              live_events: item.live_events,
+              location: item.location,
+              name: item.name,
+            };
+          });
 
+        setLiveEvents(live_events);
+
+      }
+    }
   };
 
   const loadData = {
@@ -110,14 +127,14 @@ function App() {
             onSearchItemClick={handleSearchItemClick}
             menuOperation={handleMenuOperation}
           />
-          <InitUser />
+          {/* <InitUser /> */}
           <Routes>
             <Route path={"/signin"} element={<Signin />} />
             <Route path={"/signup"} element={<Signup />} />
             <Route
               path={"/"}
               element={
-                <CampusMap marker={marker} park={parkData} vtour={video} emergency={emergencyData} />
+                <CampusMap marker={marker} park={parkData} vtour={video} emergency={emergencyData} liveEvents={liveEvents} />
               }
             />
             <Route path={"/filters"} element={<FilterButtons />} />

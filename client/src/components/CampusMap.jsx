@@ -4,12 +4,13 @@ import "leaflet/dist/leaflet.css";
 import Sideload from "./Sideload";
 import { FilterButtons } from "./FilterButtons";
 import L from "leaflet";
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { getLocation } from "./Sideload";
 import VideoModal from "./VideoModal";
+import { useFetcher } from "react-router-dom";
 
 
-const CampusMap = ({ marker, park, vtour, emergency }) => {
+const CampusMap = ({ marker, park, vtour, emergency, liveEvents }) => {
   const [sideload, setSideload] = useState(null);
   const [buildings, setBuildings] = useState([]);
   const [depts, setDepts] = useState([]);
@@ -21,6 +22,10 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
     console.log(markerData)
     setSideload(markerData);
   };
+
+  useEffect(()=>{
+    getLocation(setCurrLoc)
+  },[])
 
   const campus_region = [
     [41.5884388, -87.4761925],
@@ -117,6 +122,19 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
     iconSize: [32, 32], // Adjust the size of the icon as needed
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
+
+  const parking_icon = new L.Icon({
+    iconUrl: '/images/parking.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
+
+  const events_marker = new L.Icon({
+    iconUrl: '/images/events.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
+
   return (
     <div>
       <MapContainer
@@ -148,6 +166,7 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
           </Marker>
         ))}
 
+        {/* {console.log(depts)} */}
         {depts.map((bld) => (
           <Marker
             key={bld.id}
@@ -174,8 +193,9 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
               },
             }}
           >
-            <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}
-              <Button style={{ height: 12, fontSize: 12 }} onClick={async () => {
+            <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}<br/><br/>
+                <Button variant="contained"
+                  style={{ height: 20, fontSize: 12, width:'100%' }} onClick={async () => {
                 await getLocation(setCurrLoc)
                 if (currLoc) {
                   const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
@@ -189,14 +209,13 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
           </Marker>
         ))}
 
-        {console.log(park)}
-        {console.log(emergency)}
+        {/* {console.log(park)} */}
         {park.map((prk) => {
           return (
             <Marker
               key={prk.name}
               position={prk.location}
-              icon={yellowIcon}
+              icon={parking_icon}
               eventHandlers={{
                 click: () => {
                   console.log("Parking Marker Clicked for: " + prk.name);
@@ -204,9 +223,9 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
               }}
             >
               <Popup>
-                {prk.abbr}: Remaining Capacity: {prk.capacity}
-                <Button
-                  style={{ height: 12, fontSize: 12 }}
+                {prk.abbr}: Remaining Capacity: {prk.capacity}<br/><br/>
+                <Button variant="contained"
+                  style={{ height: 20, fontSize: 12, width:'100%' }}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
                     if (currLoc) {
@@ -225,7 +244,8 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
           );
         })}
 
-{emergency.map((e) => {
+        {/* {console.log(emergency)} */}
+        {emergency.map((e) => {
           return (
             <Marker
               key={e.name}
@@ -238,13 +258,13 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
               }}
             >
               <Popup>
-                Emergency Service: {e.abbr}
-                <Button
-                  style={{ height: 12, fontSize: 12 }}
+                Emergency Service: {e.abbr}<br/><br/>
+                <Button variant="contained"
+                  style={{ height: 20, fontSize: 12, width:'100%' }}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
                     if (currLoc) {
-                      const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.location.lat},${prk.location.lng}`;
+                      const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${e.location.lat},${e.location.lng}`;
                       window.open(url, '_blank');
                     }
                     else {
@@ -259,7 +279,44 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
           );
         })}
 
-
+        {/* {console.log(liveEvents)} */}
+        {liveEvents.map((e) => {
+          return (
+            <Marker
+              key={e.name}
+              position={e.location}
+              icon={events_marker}
+              eventHandlers={{
+                click: () => {
+                  console.log("Live Events marker clicked for: " + e.name);
+                },
+              }}
+            >
+              <Popup>
+                <ul style={{padding:0, margin: 0, marginBottom:10}}>
+                  {e.live_events.map((item) => {
+                    return (<li>{item}</li>)
+                  })}
+                </ul>
+                <Button
+                 variant="contained"
+                  style={{ height: 20, fontSize: 12, width:'100%' }}
+                  onClick={async () => {
+                    await getLocation(setCurrLoc);
+                      if (currLoc) {
+                        const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${e.location.lat},${e.location.lng}`;
+                        window.open(url, '_blank');
+                      } else {
+                        alert("Finding Current Location. Please Wait!");
+                      }
+                  }}
+                >
+                  Navigate
+                </Button>
+              </Popup>
+            </Marker>
+          );
+        })}
 
         {marker && (
           <Marker
@@ -281,6 +338,7 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
       </MapContainer>
 
       {sideload && <Sideload data={sideload} />}
+      <SpaceButton location={'http://www.purdue.edu/spacemanagement'} />
       <FilterButtons showBlds={showBuildingMarkers} showDeps={showDeptMarkers} showParks={showParkMarkers} />
       {vtour.open && <VideoModal video={vtour.link} open={vtour.open} setOpen={vtour.setOpen} />}
     </div>
@@ -288,3 +346,17 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
 };
 
 export default CampusMap;
+
+const SpaceButton = ({ location }) => {
+  const url = location;
+  return <div style={{
+    position: "absolute",
+    zIndex: 2,
+    right: 30,
+    bottom: 225,
+  }}>
+    <Tooltip title="Jump to the space management segment">
+      <Button variant="contained" onClick={() => { window.open(url, "_blank_") }}>Space Management</Button>
+    </Tooltip>
+  </div>
+}
