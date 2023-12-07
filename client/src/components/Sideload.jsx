@@ -43,10 +43,6 @@ const Sideload = ({ data }) => {
     const [open, setOpen] = React.useState(false);
     const [floor, setFloor] = useState(null);
 
-    useEffect(() => {
-        getLocation(setSourceCoords)
-    }, []);
-
     return (
         <div
             style={{
@@ -59,7 +55,7 @@ const Sideload = ({ data }) => {
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 padding: 10,
                 position: "absolute",
-                zIndex: 1,
+                zIndex: 2,
                 justifyContent: 'space-between'
             }}
         >
@@ -68,9 +64,7 @@ const Sideload = ({ data }) => {
                     <Button
                         variant='outlined'
                         style={{ color: "white", width: '90%', height: 20, marginBottom: 5 }}
-                        onClick={() => {
-                            window.location.reload()
-                        }}
+                        onClick={() => { window.location.reload() }}
                     >
                         Close
                     </Button>
@@ -120,11 +114,11 @@ const Sideload = ({ data }) => {
                     <Typography style={{ textAlign: "center", color: 'white' }}>Click to</Typography>
                     <Button style={{ backgroundColor: "green", color: "white" }} onClick={async () => {
                         await getLocation(setSourceCoords)
-                        if(sourceCoords){
-                        const url = `https://www.google.com/maps/dir/?api=1&origin=${sourceCoords.latitude},${sourceCoords.longitude}&destination=${data.latitude},${data.longitude}`
-                        window.open(url, '_blank');
+                        if (sourceCoords) {
+                            const url = `https://www.google.com/maps/dir/?api=1&origin=${sourceCoords.latitude},${sourceCoords.longitude}&destination=${data.latitude},${data.longitude}`
+                            window.open(url, '_blank');
                         }
-                        else{
+                        else {
                             console.log("Current Location is not yet set")
                         }
                     }}>

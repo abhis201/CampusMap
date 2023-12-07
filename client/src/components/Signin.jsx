@@ -2,10 +2,10 @@ import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 import { Card, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../store/atoms/user.js";
+import user_data from "../../../common/users.json"
 import Signup from './Signup.jsx';
 
 function Signin() {
@@ -15,10 +15,7 @@ function Signin() {
     const setUser = useSetRecoilState(userState);
 
     return (
-        <div style={{ position: 'relative' }}>
-            {/* <div style={{ display: 'absolute', zIndex: 1}}>
-                <img style={{ width: '100vw', height: '93vh' }} src='https://bloximages.chicago2.vip.townnews.com/nwitimes.com/content/tncms/assets/v3/editorial/7/ce/7ceabee4-8dc8-5791-9587-f6521d6a474c/605e7908905b7.image.jpg?resize=1200%2C800'></img>
-            </div> */}
+        <div style={{ position: 'relative', backgroundImage: '' }}>
             <div style={{ display: 'absolute', zIndex: 2, top: 0, left: 0 }}>
                 <div style={{
                     justifyContent: "center", display: "flex", paddingTop: 100,
@@ -66,23 +63,13 @@ function Signin() {
                                     size={"large"}
                                     variant="contained"
                                     onClick={async () => {
-                                        const res = await axios.post(`${BASE_URL}/admin/login`, {
-                                            username: email,
-                                            password: password
-                                        }, {
-                                            headers: {
-                                                "Content-type": "application/json"
-                                            }
-                                        });
-                                        const data = res.data;
-
-                                        localStorage.setItem("token", data.token);
-                                        // window.location = "/"
-                                        setUser({
-                                            userEmail: email,
-                                            isLoading: false
-                                        })
-                                        navigate("/courses")
+                                        const user = user_data.filter((u) => u.email === email && u.password === password);
+                                        if (user.length > 0) {
+                                            setUser(user[0]);
+                                        } else {
+                                            console.log("Wrong Credentials! or User Not Present!");
+                                        }
+                                        navigate("/")
                                     }}> Sign in</Button>
                             </Card>
                         </div>

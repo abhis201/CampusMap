@@ -1,22 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signin from "./components/Signin.jsx";
 import Signup from "./components/Signup.jsx";
-import { userState } from "./store/atoms/user.js";
 import CampusMap from "./components/CampusMap.jsx";
 import Navbar from "./components/Navbar.jsx";
-import { RecoilRoot, useSetRecoilState } from "recoil";
-import axios from "axios";
-import { BASE_URL } from "./config.js";
-import { useEffect, useState } from "react";
+import { RecoilRoot, useRecoilValue } from "recoil";
+import {useState } from "react";
 import { FilterButtons } from "./components/FilterButtons.jsx";
 import Sideload from "./components/Sideload.jsx";
 import building_data from "../../common/buiding.json";
 import parking_data from "../../common/parking.json";
 import VideoModal from './components/VideoModal.jsx'
 import emergency_data from "../../common/emergency.json"
+import {userClassesState} from "../src/store/selectors/userClasses.js"
+import { ThreeDMap } from "./components/ThreeDMap.jsx";
 
 function App() {
   const [marker, setMarker] = useState(null);
+  const [classUser, setClassUser] = useState([]);
 
   const handleSearchItemClick = (item) => {
     console.log("Search Item Clicked!");
@@ -50,6 +50,7 @@ function App() {
   const [parkData, setParkData] = useState([]);
   const [emergencyData, setEmergencyData] = useState([])
   const [liveEvents, setLiveEvents] = useState([])
+  const [locateUserClasses, setLocateUserClasses] = useState([])
 
   const handleMenuOperation = async (item) => {
     if (item === "Visitor Tour") {
@@ -90,7 +91,14 @@ function App() {
           });
 
         setLiveEvents(live_events);
-
+      }
+    }
+    else if(item === "Locate Class"){
+      if(locateUserClasses && locateUserClasses.length > 0){
+        setLocateUserClasses([])
+      }
+      else{
+        setLocateUserClasses(classUser)
       }
     }
   };
@@ -113,6 +121,10 @@ function App() {
     abbr: "Ande",
   };
 
+  const setUserClasses = (userClasses) => {
+    setClassUser(userClasses)
+  }
+
   return (
     <RecoilRoot>
       <div
@@ -127,16 +139,17 @@ function App() {
             onSearchItemClick={handleSearchItemClick}
             menuOperation={handleMenuOperation}
           />
-          {/* <InitUser /> */}
+          <InitUser setClassesForUser={setUserClasses}/>
           <Routes>
             <Route path={"/signin"} element={<Signin />} />
             <Route path={"/signup"} element={<Signup />} />
             <Route
               path={"/"}
               element={
-                <CampusMap marker={marker} park={parkData} vtour={video} emergency={emergencyData} liveEvents={liveEvents} />
+                <CampusMap marker={marker} park={parkData} vtour={video} emergency={emergencyData} liveEvents={liveEvents} classes={locateUserClasses} />
               }
             />
+            <Route path={"/3d"} element={<ThreeDMap scale="40" modelPath={"/final2.glb"}/>} />
             <Route path={"/filters"} element={<FilterButtons />} />
             <Route path={"/sideload"} element={<Sideload data={loadData} />} />
             <Route path={"/ytube"} element={<VideoModal video='https://www.youtube.com/embed/EhYk54W9kYM' open={vtour} setOpen={setVtour} />} />
@@ -147,38 +160,15 @@ function App() {
   );
 }
 
-function InitUser() {
-  const setUser = useSetRecoilState(userState);
-  const init = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/admin/me`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
+function InitUser({setClassesForUser}) {
+  const classes = useRecoilValue(userClassesState)
 
-      if (response.data.username) {
-        setUser({
-          isLoading: false,
-          userEmail: response.data.username,
-        });
-      } else {
-        setUser({
-          isLoading: false,
-          userEmail: null,
-        });
-      }
-    } catch (e) {
-      setUser({
-        isLoading: false,
-        userEmail: null,
-      });
-    }
-  };
+  if(classes){
+  console.log("Init User Classes")
+  console.log(classes)
+  }
 
-  useEffect(() => {
-    init();
-  }, []);
+  setClassesForUser(classes);
 
   return <></>;
 }

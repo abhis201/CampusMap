@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MapContainer, Polygon, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, Polygon, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import Sideload from "./Sideload";
 import { FilterButtons } from "./FilterButtons";
@@ -7,10 +7,10 @@ import L from "leaflet";
 import { Button, Tooltip } from "@mui/material";
 import { getLocation } from "./Sideload";
 import VideoModal from "./VideoModal";
-import { useFetcher } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
-const CampusMap = ({ marker, park, vtour, emergency, liveEvents }) => {
+const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
   const [sideload, setSideload] = useState(null);
   const [buildings, setBuildings] = useState([]);
   const [depts, setDepts] = useState([]);
@@ -71,20 +71,6 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents }) => {
 
   const placeColor = { color: "#2596be" };
 
-  // //Shift map focus
-  // const [mapKey, setMapKey] = useState(0); // Add state for the map key
-  // const mapRef = useRef(null);
-
-  // useEffect(() => {
-  //   setMapKey((prevKey) => prevKey + 1);
-  //   // Shift the center to the marker with animation
-  //   if (mapRef.current && marker && marker.position) {
-  //     mapRef.current.flyTo(marker.position, 18, {
-  //       duration: 1, // Animation duration in seconds
-  //     });
-  //   }
-  // }, [marker]);
-
   const campusLat = import.meta.env.VITE_CENTER_LAT;
   const campusLng = import.meta.env.VITE_CENTER_LNG;
 
@@ -135,14 +121,29 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents }) => {
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
+  const class_marker = new L.Icon({
+    iconUrl: '/images/classes.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
+
+  // const { flyTo } = useMap();
+
+  // useEffect(() => {
+  //   if (marker) {
+  //     flyTo(marker.position, zoom, {
+  //       duration: 2, // Animation duration in seconds
+  //       easeLinearity: 0.5, // Animation easing, 0.5 is the default
+  //     });
+  //   }
+  // }, [marker, flyTo]);
+
   return (
     <div>
       <MapContainer
         id="mapRef"
         center={campusCoordinates}
         zoom={zoom}
-        // whenCreated={(map) => (mapRef.current = map)} // Save map reference to mapRef
-        // key={mapKey}
         style={{ width: "100vw", height: "93vh", zIndex: 0 }}
       >
         <TileLayer
@@ -318,6 +319,41 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents }) => {
           );
         })}
 
+        {/* {console.log(classes)} */}
+        {classes && classes.map((e) => {
+          return (
+            <Marker
+              key={e.class_name}
+              position={e.location}
+              icon={class_marker}
+              eventHandlers={{
+                click: () => {
+                  console.log("Class marker clicked for: " + e.class_name);
+                },
+              }}
+            >
+              <Popup>
+                {e.class_name}<br/>{e.timing}<br/><br/>
+                <Button
+                 variant="contained"
+                  style={{ height: 20, fontSize: 12, width:'100%' }}
+                  onClick={async () => {
+                    await getLocation(setCurrLoc);
+                      if (currLoc) {
+                        const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${e.location.lat},${e.location.lng}`;
+                        window.open(url, '_blank');
+                      } else {
+                        alert("Finding Current Location. Please Wait!");
+                      }
+                  }}
+                >
+                  Navigate
+                </Button>
+              </Popup>
+            </Marker>
+          );
+        })}
+
         {marker && (
           <Marker
             key={marker.id}
@@ -338,6 +374,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents }) => {
       </MapContainer>
 
       {sideload && <Sideload data={sideload} />}
+      <ThreeDButton />
       <SpaceButton location={'http://www.purdue.edu/spacemanagement'} />
       <FilterButtons showBlds={showBuildingMarkers} showDeps={showDeptMarkers} showParks={showParkMarkers} />
       {vtour.open && <VideoModal video={vtour.link} open={vtour.open} setOpen={vtour.setOpen} />}
@@ -359,4 +396,33 @@ const SpaceButton = ({ location }) => {
       <Button variant="contained" onClick={() => { window.open(url, "_blank_") }}>Space Management</Button>
     </Tooltip>
   </div>
+}
+
+const ThreeDButton = () => {
+  const navigate = useNavigate()
+  return <div
+      style={{
+        position: "absolute",
+        zIndex: 1,
+        left: 30,
+        bottom: 20,
+      }}
+    >
+      <Tooltip title="View a 3d version of the Map">
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: 'black',
+            color: 'orange',
+            borderRadius: '50%',
+            width: '50px',
+            height: '50px',
+            padding: '0',
+          }}
+          onClick={() => { navigate("/3d")}}
+        >
+          3D
+        </Button>
+      </Tooltip>
+    </div>
 }

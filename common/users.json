@@ -1,0 +1,29 @@
+[
+  {
+    "first_name": "Abhishek",
+    "last_name": "Singh",
+    "email": "sing1290@pnw.edu",
+    "password": "qwerty123",
+    "puid": "0036789860",
+    "profile_pic": "/images/profile-abhishek.png",
+    "type": "Student",
+    "major": "MS CS",
+    "classes": [
+      {
+        "class_name": "Software Engineering",
+        "location": {"lat":41.586762758600486, "lng":-87.47547098428547},
+        "timing": "09.30-10.45 CST"
+      },
+      {
+        "class_name": "Applied Machine Learning",
+        "location": {"lat":41.58696202127871, "lng":-87.47554803471688},
+        "timing": "17.00-20.00 CST"
+      },
+      {
+        "class_name": "Artificial Intelligence",
+        "location": { "lat": 41.584218204242696, "lng": -87.47399701123474 },
+        "timing": "11.00-12.00 CST"
+      }
+    ]
+  }
+]

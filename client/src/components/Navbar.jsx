@@ -11,9 +11,12 @@ import Tooltip from "@mui/material/Tooltip";
 import logo from "../../public/images/pnw-logo.png";
 import buildings from "../../../common/buiding.json";
 import WeatherIcon from "../../public/images/snow.png";
+import { userNameState } from "../store/selectors/userName"
+import { useRecoilValue } from "recoil";
 
 const Navbar = ({ onSearchItemClick, menuOperation }) => {
   const [searchItem, setSearchItem] = useState("");
+  const userName = useRecoilValue(userNameState) || null
 
   const handleSearchItemClick = (item) => {
     onSearchItemClick(item); // Call the callback function to add a marker
@@ -44,20 +47,20 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
             style={{ height: "40px", marginRight: "10px" }}
           />
           <Tooltip title={'Go back to Map'}>
-          <Typography
-            variant="h6"
-            component="div"
-            onClick={() => {
-              window.location = "/";
-            }}
-            style={{ cursor: "pointer", fontWeight:'bold'}}
-          >
-            Purdue University Northwest
-          </Typography>
+            <Typography
+              variant="h6"
+              component="div"
+              onClick={() => {
+                window.location = "/";
+              }}
+              style={{ cursor: "pointer", fontWeight: 'bold' }}
+            >
+              Purdue University Northwest
+            </Typography>
           </Tooltip>
         </div>
 
-        <Tooltip title="Rain - 40°F / 4°C - 80% Chance of Snowing">
+        <Tooltip title="Cloudy - 40°F / 4°C - 0% Chance of Snowing">
           <img src={WeatherIcon} width={45}></img>
         </Tooltip>
 
@@ -122,8 +125,8 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                       return searchItem.toLowerCase() === ""
                         ? item
                         : item.name
-                            .toLowerCase()
-                            .includes(searchItem.toLowerCase());
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase());
                     })
                     .map((item) => (
                       <li
@@ -147,7 +150,7 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
             </Grid>
           </div>
 
-          <Tooltip title="Click to Sign Out">
+          {!userName && <Tooltip title="Click to Sign In">
             <IconButton
               color="inherit"
               aria-haspopup="true"
@@ -159,7 +162,20 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                 }}
               />
             </IconButton>
-          </Tooltip>
+          </Tooltip>}
+
+          {userName && (
+            <img
+              src="/images/profile-abhishek.png"
+              alt="User Icon"
+              style={{ cursor: 'pointer', width: 30}}
+              onClick={() => {
+                window.location = "/signin";
+              }}
+            />
+          )}
+
+
         </div>
       </Toolbar>
     </AppBar>
