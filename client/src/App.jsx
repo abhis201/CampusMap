@@ -70,7 +70,6 @@ function App() {
       }
       else{
         const filteredEmergencyData = emergency_data
-        .splice(0,5);
         setEmergencyData(filteredEmergencyData);
         
       }

@@ -112,6 +112,11 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
+  const emergency_icon = new L.Icon({
+    iconUrl: '/images/emergency_icon.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
   return (
     <div>
       <MapContainer
@@ -225,7 +230,7 @@ const CampusMap = ({ marker, park, vtour, emergency }) => {
             <Marker
               key={e.name}
               position={e.location}
-              icon={yellowIcon}
+              icon={emergency_icon}
               eventHandlers={{
                 click: () => {
                   console.log("Emergency Marker Clicked for: " + e.name);
