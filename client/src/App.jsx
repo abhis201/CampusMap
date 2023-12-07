@@ -13,7 +13,7 @@ import Sideload from "./components/Sideload.jsx";
 import building_data from "../../common/buiding.json";
 import parking_data from "../../common/parking.json";
 import VideoModal from './components/VideoModal.jsx'
-
+import emergency_data from "../../common/emergency.json"
 function App() {
   const [marker, setMarker] = useState(null);
 
@@ -47,7 +47,7 @@ function App() {
   }
 
   const [parkData, setParkData] = useState([]);
-
+  const[emergencyData, setEmergencyData] = useState([])
   const handleMenuOperation = async (item) => {
     if (item === "Visitor Tour") {
       setVtour(true);
@@ -62,6 +62,20 @@ function App() {
         setParkData(filteredParkData);
       }
     }
+    else if(item==="Emergency")
+    {
+      if(emergencyData.length>0)
+      {
+        setEmergencyData([]);
+      }
+      else{
+        const filteredEmergencyData = emergency_data
+        setEmergencyData(filteredEmergencyData);
+        
+      }
+    }
+    
+
   };
 
   const loadData = {
@@ -103,7 +117,7 @@ function App() {
             <Route
               path={"/"}
               element={
-                <CampusMap marker={marker} park={parkData} vtour={video} />
+                <CampusMap marker={marker} park={parkData} vtour={video} emergency={emergencyData} />
               }
             />
             <Route path={"/filters"} element={<FilterButtons />} />

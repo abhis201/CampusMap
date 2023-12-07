@@ -9,7 +9,7 @@ import { getLocation } from "./Sideload";
 import VideoModal from "./VideoModal";
 
 
-const CampusMap = ({ marker, park, vtour }) => {
+const CampusMap = ({ marker, park, vtour, emergency }) => {
   const [sideload, setSideload] = useState(null);
   const [buildings, setBuildings] = useState([]);
   const [depts, setDepts] = useState([]);
@@ -112,6 +112,11 @@ const CampusMap = ({ marker, park, vtour }) => {
     iconAnchor: [16, 32], // Position the icon anchor to the bottom center
   });
 
+  const emergency_icon = new L.Icon({
+    iconUrl: '/images/emergency_icon.png',
+    iconSize: [32, 32], // Adjust the size of the icon as needed
+    iconAnchor: [16, 32], // Position the icon anchor to the bottom center
+  });
   return (
     <div>
       <MapContainer
@@ -185,6 +190,7 @@ const CampusMap = ({ marker, park, vtour }) => {
         ))}
 
         {console.log(park)}
+        {console.log(emergency)}
         {park.map((prk) => {
           return (
             <Marker
@@ -199,6 +205,40 @@ const CampusMap = ({ marker, park, vtour }) => {
             >
               <Popup>
                 {prk.abbr}: Remaining Capacity: {prk.capacity}
+                <Button
+                  style={{ height: 12, fontSize: 12 }}
+                  onClick={async () => {
+                    await getLocation(setCurrLoc);
+                    if (currLoc) {
+                      const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.location.lat},${prk.location.lng}`;
+                      window.open(url, '_blank');
+                    }
+                    else {
+                      alert("Finding Current Location Please Wait!")
+                    }
+                  }}
+                >
+                  Navigate
+                </Button>
+              </Popup>
+            </Marker>
+          );
+        })}
+
+{emergency.map((e) => {
+          return (
+            <Marker
+              key={e.name}
+              position={e.location}
+              icon={emergency_icon}
+              eventHandlers={{
+                click: () => {
+                  console.log("Emergency Marker Clicked for: " + e.name);
+                },
+              }}
+            >
+              <Popup>
+                Emergency Service: {e.abbr}
                 <Button
                   style={{ height: 12, fontSize: 12 }}
                   onClick={async () => {
