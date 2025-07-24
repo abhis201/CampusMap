@@ -1,3 +1,68 @@
 .app {
     position: relative;
 }
+
+/* Responsive typography */
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+/* Map container responsive styles */
+.leaflet-container {
+    height: 100vh !important;
+    width: 100% !important;
+}
+
+/* Responsive button styles */
+.responsive-button {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    min-height: 44px; /* Touch-friendly minimum height */
+}
+
+@media (max-width: 768px) {
+    .responsive-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+        min-height: 48px;
+    }
+}
+
+/* Responsive spacing utilities */
+.spacing-sm {
+    margin: 8px;
+}
+
+.spacing-md {
+    margin: 16px;
+}
+
+.spacing-lg {
+    margin: 24px;
+}
+
+@media (max-width: 768px) {
+    .spacing-sm {
+        margin: 4px;
+    }
+    
+    .spacing-md {
+        margin: 8px;
+    }
+    
+    .spacing-lg {
+        margin: 12px;
+    }
+}

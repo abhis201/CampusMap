@@ -128,7 +128,14 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                     <InputBase
                       placeholder="Search Location"
                       inputProps={{ "aria-label": "search" }}
-                      style={{ color: "black", width: "100%" }}
+                      style={{ 
+                        color: "black", 
+                        width: "100%",
+                        fontSize: '16px', // Prevents zoom on iOS
+                        padding: '8px 12px',
+                        backgroundColor: 'white',
+                        borderRadius: '4px'
+                      }}
                       value={searchItem}
                       onChange={(item) => {
                         setSearchItem(item.target.value);
@@ -146,6 +153,8 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                           padding: "10px",
                           boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)",
                           width: "100%",
+                          maxHeight: "200px",
+                          overflowY: "auto",
                         }}
                       >
                         {buildings
@@ -159,7 +168,11 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                           .map((item) => (
                             <li
                               key={item.name}
-                              onClick={() => handleSearchItemClick(item)}
+                              onClick={() => {
+                                handleSearchItemClick(item);
+                                setDrawerOpen(false);
+                                setSearchItem("");
+                              }}
                             >
                               <button
                                 style={{
@@ -167,6 +180,10 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                                   border: "none",
                                   cursor: "pointer",
                                   color: "white",
+                                  width: "100%",
+                                  textAlign: "left",
+                                  padding: "8px",
+                                  fontSize: "14px",
                                 }}
                               >
                                 {item.name}
@@ -196,7 +213,11 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                 <InputBase
                   placeholder="Search Location"
                   inputProps={{ "aria-label": "search" }}
-                  style={{ color: "white" }}
+                  style={{ 
+                    color: "white",
+                    fontSize: '16px',
+                    padding: '4px 8px'
+                  }}
                   value={searchItem}
                   onChange={(item) => {
                     setSearchItem(item.target.value);
@@ -213,6 +234,8 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                       zIndex: 1,
                       padding: "10px",
                       boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)",
+                      maxHeight: "200px",
+                      overflowY: "auto",
                     }}
                   >
                     {buildings
@@ -226,7 +249,10 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                       .map((item) => (
                         <li
                           key={item.name}
-                          onClick={() => handleSearchItemClick(item)}
+                          onClick={() => {
+                            handleSearchItemClick(item);
+                            setSearchItem("");
+                          }}
                         >
                           <button
                             style={{
@@ -234,6 +260,10 @@ const Navbar = ({ onSearchItemClick, menuOperation }) => {
                               border: "none",
                               cursor: "pointer",
                               color: "white",
+                              width: "100%",
+                              textAlign: "left",
+                              padding: "8px",
+                              fontSize: "14px",
                             }}
                           >
                             {item.name}

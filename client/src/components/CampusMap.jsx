@@ -4,19 +4,30 @@ import "leaflet/dist/leaflet.css";
 import Sideload from "./Sideload";
 import { FilterButtons } from "./FilterButtons";
 import L from "leaflet";
-import { Button, Tooltip } from "@mui/material";
-import { getLocation } from "./Sideload";
+import { Button, Tooltip, useMediaQuery, useTheme } from "@mui/material";
+import { getLocation } from "../utils/geolocation";
 import VideoModal from "./VideoModal";
 import { useNavigate } from "react-router-dom";
 
 
 const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  
   const [sideload, setSideload] = useState(null);
   const [buildings, setBuildings] = useState([]);
   const [depts, setDepts] = useState([]);
   const [parkings, setParking] = useState([]);
 
   const [currLoc, setCurrLoc] = useState(null);
+
+  // Responsive button styles for popups
+  const getPopupButtonStyle = () => ({
+    height: isMobile ? 40 : 20,
+    fontSize: isMobile ? 14 : 12,
+    width: '100%',
+    minHeight: isMobile ? 44 : 20,
+  });
 
   const markerClick = (markerData) => {
     console.log(markerData)
@@ -77,7 +88,8 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
   // Center coordinates for your map
   let campusCoordinates = [campusLat, campusLng];
 
-  let zoom = 16;
+  // Responsive zoom level
+  let zoom = isMobile ? 15 : 16;
 
   const redIcon = new L.Icon({
     iconUrl: '/images/pin.png',
@@ -196,7 +208,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
           >
             <Popup>{prk.abbr}: Remaining Capacity: {prk.capacity}<br/><br/>
                 <Button variant="contained"
-                  style={{ height: 20, fontSize: 12, width:'100%' }} onClick={async () => {
+                  style={getPopupButtonStyle()} onClick={async () => {
                 await getLocation(setCurrLoc)
                 if (currLoc) {
                   const url = `https://www.google.com/maps/dir/?api=1&origin=${currLoc.latitude},${currLoc.longitude}&destination=${prk.position.lat},${prk.position.lng}`
@@ -226,7 +238,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
               <Popup>
                 {prk.abbr}: Remaining Capacity: {prk.capacity}<br/><br/>
                 <Button variant="contained"
-                  style={{ height: 20, fontSize: 12, width:'100%' }}
+                  style={getPopupButtonStyle()}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
                     if (currLoc) {
@@ -261,7 +273,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
               <Popup>
                 Emergency Service: {e.abbr}<br/><br/>
                 <Button variant="contained"
-                  style={{ height: 20, fontSize: 12, width:'100%' }}
+                  style={getPopupButtonStyle()}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
                     if (currLoc) {
@@ -301,7 +313,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
                 </ul>
                 <Button
                  variant="contained"
-                  style={{ height: 20, fontSize: 12, width:'100%' }}
+                  style={getPopupButtonStyle()}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
                       if (currLoc) {
@@ -336,7 +348,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
                 {e.class_name}<br/>{e.timing}<br/><br/>
                 <Button
                  variant="contained"
-                  style={{ height: 20, fontSize: 12, width:'100%' }}
+                  style={getPopupButtonStyle()}
                   onClick={async () => {
                     await getLocation(setCurrLoc);
                       if (currLoc) {
@@ -373,7 +385,7 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
 
       </MapContainer>
 
-      {sideload && <Sideload data={sideload} />}
+      {sideload && <Sideload data={sideload} onClose={() => setSideload(null)} />}
       <ThreeDButton />
       <SpaceButton location={'http://www.purdue.edu/spacemanagement'} />
       <FilterButtons showBlds={showBuildingMarkers} showDeps={showDeptMarkers} showParks={showParkMarkers} />
@@ -385,27 +397,43 @@ const CampusMap = ({ marker, park, vtour, emergency, liveEvents, classes }) => {
 export default CampusMap;
 
 const SpaceButton = ({ location }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  
   const url = location;
   return <div style={{
     position: "absolute",
     zIndex: 2,
-    right: 30,
-    bottom: 225,
+    right: isMobile ? 16 : 30,
+    bottom: isMobile ? 140 : 225,
   }}>
     <Tooltip title="Jump to the space management segment">
-      <Button variant="contained" onClick={() => { window.open(url, "_blank_") }}>Space Management</Button>
+      <Button 
+        variant="contained"
+        size={isMobile ? "small" : "medium"}
+        sx={{
+          fontSize: isMobile ? '0.75rem' : '0.875rem',
+          padding: isMobile ? '6px 12px' : '8px 16px',
+        }}
+        onClick={() => { window.open(url, "_blank_") }}
+      >
+        {isMobile ? "Space Mgmt" : "Space Management"}
+      </Button>
     </Tooltip>
   </div>
 }
 
 const ThreeDButton = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate()
+  
   return <div
       style={{
         position: "absolute",
         zIndex: 1,
-        left: 30,
-        bottom: 20,
+        left: isMobile ? 16 : 30,
+        bottom: isMobile ? 80 : 20,
       }}
     >
       <Tooltip title="View a 3d version of the Map">
@@ -415,9 +443,11 @@ const ThreeDButton = () => {
             backgroundColor: 'black',
             color: 'orange',
             borderRadius: '50%',
-            width: '50px',
-            height: '50px',
+            width: isMobile ? '45px' : '50px',
+            height: isMobile ? '45px' : '50px',
             padding: '0',
+            minWidth: 'auto',
+            fontSize: isMobile ? '0.75rem' : '0.875rem',
           }}
           onClick={() => { navigate("/3d")}}
         >
